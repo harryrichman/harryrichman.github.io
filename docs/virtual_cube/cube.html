@@ -23,8 +23,8 @@
 
 </script>
 <script>
-function toggle() {
-    var x = document.getElementById("key");
+function toggle_key() {
+    var x = document.getElementById("keyboard_key");
     if (x.style.display === "block") {
         x.style.display = "none";
     } else {
@@ -61,9 +61,9 @@ function toggle() {
 
 <div id="instr">
     Press spacebar to scramble.
-    Use <button onclick="toggle()">keyboard</button> to turn cube.
+    Use <button onclick="toggle_key()">keyboard</button> to turn cube.
 
-<img id="key" src="keyboard.png"/>
+<img id="keyboard_key" src="keyboard.png"/>
 
 </div>
 <table id="help">
