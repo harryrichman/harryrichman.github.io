@@ -23,6 +23,10 @@ h2 {
     font-size: 28px;
 }
 
+li {
+    margin: 15px 0px;
+}
+
 small {
     padding: 10px;
 }
