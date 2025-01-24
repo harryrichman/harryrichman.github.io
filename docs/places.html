@@ -29,7 +29,7 @@
     <div id="map3" style="height:400px"></div>
     <br /> -->
 
-    Here are places I have been:
+    Here are places I have held positions or studied:
     <div id="map-all" style="height:600px"></div>
     <br />
 
@@ -44,42 +44,43 @@
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map_all);
 
-        var markers = new L.MarkerClusterGroup();
+        var long_term_markers = new L.MarkerClusterGroup();
 
-        markers.addLayer(L.marker([42.3590, -71.0904])
+        long_term_markers.addLayer(
+            L.marker([42.3590, -71.0904])
             .bindPopup(
                 `<b>Massachusetts Institute of Technology</b><br />
                 Building 2`
             )
         );
-        markers.addLayer(
+        long_term_markers.addLayer(
             L.marker([55.7463, 37.5898])
             .bindPopup(
                 `<b>Independent University of Moscow</b>`
             )
         );
-        markers.addLayer(
+        long_term_markers.addLayer(
             L.marker([42.2755, -83.7352])
             .bindPopup(
                 `<b>University of Michigan</b><br />
                 East Hall`
             )
         );
-        markers.addLayer(
+        long_term_markers.addLayer(
             L.marker([47.6572, -122.3041])
             .bindPopup(
                 `<b>University of Washington</b><br />
                 Padelford Hall`
             )
         );
-        markers.addLayer(
+        long_term_markers.addLayer(
             L.marker([47.6310, -122.3275])
             .bindPopup(
                 `<b>Fred Hutch Cancer Center</b><br />
                 Steam Plant Building`
             )
         );
-        markers.addLayer(
+        long_term_markers.addLayer(
             L.marker([25.0218, 121.5374])
             .bindPopup(
                 `<b>National Taiwan University</b><br />
@@ -87,127 +88,100 @@
             )
         );
 
-        map_all.addLayer(markers)
+        map_all.addLayer(long_term_markers)
 
-        // L.marker([42.3590, -71.0904])
-        //     .addTo(map_all)
-        //     .bindPopup(
-        //         `<b>Massachusetts Institute of Technology</b><br />
-        //         Building 2`
-        //     )
-        //     .openPopup();
-        // L.marker([55.7463, 37.5898])
-        //     .addTo(map_all)
-        //     .bindPopup(
-        //         `<b>Independent University of Moscow</b>`
-        //     )
-        //     .openPopup();
-        // L.marker([42.2755, -83.7352])
-        //     .addTo(map_all)
-        //     .bindPopup(
-        //         `<b>University of Michigan</b><br />
-        //         East Hall`
-        //     )
-        //     .openPopup();
-        // L.marker([47.6310, -122.3275]).addTo(map_all)
-        //     .bindPopup(
-        //         `<b>Fred Hutch Cancer Center</b><br />
-        //         Steam Plant Building`
-        //     ).openPopup();
-        // L.marker([47.6572, -122.3041])
-        //     .addTo(map_all)
-        //     .bindPopup(
-        //         `<b>University of Washington</b><br />
-        //         Padelford Hall`
-        //     )
-        //     .openPopup();
-        // L.marker([25.0218, 121.5374]).addTo(map_all)
-        //     .bindPopup(
-        //         `<b>National Taiwan University</b><br />
-        //         Cosmology Building`
-        //     ).openPopup();
 
         const map_short = L.map("map-short").setView([47.657, -122.304], 2);
         const tiles1 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map_short);
-        const marker1 = L.marker([44.9745, -93.2347]).addTo(map_short)
+
+        var short_term_markers = new L.MarkerClusterGroup();
+
+        short_term_markers.addLayer(
+            L.marker([44.9745, -93.2347])
             .bindPopup(
                 `<b>University of Minnesota</b><br />
                 Vincent Hall`
-            ).openPopup();
-    
-        L.marker([48.7144, 2.2113]).addTo(map_short)
+            )
+        );
+        short_term_markers.addLayer(
+            L.marker([48.7144, 2.2113])
             .bindPopup(
                 `<b>École Polytechnique</b>`
-            ).openPopup();
-        L.marker([13.0174, 77.5659]).addTo(map_short)
+            )
+        );
+        short_term_markers.addLayer(
+            L.marker([13.0174, 77.5659])
             .bindPopup(
                 `<b>Indian Institute of Science</b>`
-            ).openPopup();
-        L.marker([46.9504, 7.4382]).addTo(map_short)
+            )
+        );
+        short_term_markers.addLayer(
+            L.marker([46.9504, 7.4382])
             .bindPopup(
                 `<b>University of Bern</b>`
-            ).openPopup();
-        L.marker([59.3659, 18.0592]).addTo(map_short)
+            )
+        );
+        short_term_markers.addLayer(
+            L.marker([59.3659, 18.0592])
             .bindPopup(
                 `<b>Stockholm University</b>`
-            ).openPopup();
-        L.marker([46.0494, 14.5041]).addTo(map_short)
+            )
+        );
+        short_term_markers.addLayer(
+            L.marker([46.0494, 14.5041])
             .bindPopup(
                 `<b>University of Ljubljana</b>`
-            ).openPopup();
-        L.marker([43.6587, -79.3976]).addTo(map_short)
+            )
+        );
+        short_term_markers.addLayer(
+            L.marker([43.6587, -79.3976])
             .bindPopup(
                 `<b>Fields Institute</b>`
-            ).openPopup();
-        L.marker([51.1725, -115.5636]).addTo(map_short)
+            )
+        );
+        short_term_markers.addLayer(
+            L.marker([51.1725, -115.5636])
             .bindPopup(
                 `<b>Banff International Research Station</b>`
-            ).openPopup();
-        L.marker([41.8240, -71.4070]).addTo(map_short)
+            )
+        );
+        short_term_markers.addLayer(
+            L.marker([41.8240, -71.4070])
             .bindPopup(
                 `<b>ICERM</b>`
-            ).openPopup();
-        L.marker([37.8798, -122.2444]).addTo(map_short)
+            )
+        );
+        short_term_markers.addLayer(
+            L.marker([37.8798, -122.2444])
             .bindPopup(
                 `<b>MSRI</b>`
-            ).openPopup();
-        L.marker([32.2318, -110.9534]).addTo(map_short)
+            )
+        );
+        short_term_markers.addLayer(
+            L.marker([32.2318, -110.9534])
             .bindPopup(
                 `<b>University of Arizona</b>`
-            ).openPopup();
-        L.marker([51.0800, -114.1279]).addTo(map_short)
+            )
+        );
+        short_term_markers.addLayer(
+            L.marker([51.0800, -114.1279])
             .bindPopup(
                 `<b>University of Calgary</b>`
-            ).openPopup();
-        L.marker([37.5929, 127.0457]).addTo(map_short)
+            )
+        );
+        short_term_markers.addLayer(
+            L.marker([37.5929, 127.0457])
             .bindPopup(
                 `<b>Korea Institute for Advanced Study</b>`
-            ).openPopup();
+            )
+        );
 
-        // const map3 = L.map('map3').setView([25.021, 121.538], 13);
-        // const tiles3 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        //     maxZoom: 19,
-        //     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        // }).addTo(map3);
-        // const marker3 = L.marker([25.021, 121.538]).addTo(map3)
-        //     .bindPopup('<b>Astronomy Mathematics Building</b><br />National Taiwan University').openPopup();
-
-        // const circle = L.circle([51.508, -0.11], {
-        //     color: 'red',
-        //     fillColor: '#f03',
-        //     fillOpacity: 0.5,
-        //     radius: 500
-        // }).addTo(map).bindPopup('I am a circle.');
-    
-        // const polygon = L.polygon([
-        //     [51.509, -0.08],
-        //     [51.503, -0.06],
-        //     [51.51, -0.047]
-        // ]).addTo(map_all).bindPopup('I am a polygon.');
-    
+        map_short.addLayer(short_term_markers);
+        
+        
         // show coordinates when clicking on map
         const popup1 = L.popup()
             .setLatLng([51.513, -0.09])
