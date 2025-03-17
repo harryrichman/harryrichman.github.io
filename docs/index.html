@@ -21,296 +21,358 @@
 
 <h2>Harry Richman</h2>
 
-<div style="float:right" id="photo">
-<image src="hike.jpg" width="330"/>
-<br />
-<button>photo</button>
-</div>
+    <!-- Tab links -->
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'About')" id="defaultOpen">About me</button>
+        <button class="tablinks" onclick="openTab(event, 'Research')">Research</button>
+        <button class="tablinks" onclick="openTab(event, 'Teaching')">Teaching</button>
+        <button class="tablinks" onclick="openTab(event, 'Notes')">Notes and Slides</button>
+        <!-- <button class="tablinks" onclick="openTab(event, 'CV')">CV</button>
+        <button class="tablinks" onclick="openTab(event, 'Locations')">Where am I?</button>
+        <button class="tablinks" onclick="openTab(event, 'Contact details')">Contact details</button> -->
+        <button class="tablinks" onclick="openTab(event, 'Misc')">Miscellaneous</button>
+    </div>
+  
+    <!-- Tab content -->
 
-<p>
-I am interested in problems in 
-tropical geometry
-(<a href="https://www.quantamagazine.org/tinkertoy-models-produce-new-geometric-insights-20180905/" style="color:black; text-decoration:none">what's that??</a>), 
-phylogenetics,
-combinatorics, 
-and number theory.
-</p>
 
-<p>
-    I am currently a postdoc at <a href="https://ncts.ntu.edu.tw/">NCTS</a> mentored by <a href="https://scholar.lib.ntnu.edu.tw/en/persons/liang-chung-hsia">Liang-Chung Hsia</a>.
-    I previously held postdoc positions in the <a href="https://matsen.fredhutch.org/">Matsen group</a>, 
-    part of the 
-    <a href="https://www.fredhutch.org/en/research/divisions/public-health-sciences-division/research/computational-biology.html"
-    >Herbold Computational Biology Program</a>
-    at the <a href="https://www.fredhutch.org/en/research.html">Fred Hutch Cancer Center</a>,
-    and at the <a href="http://math.washington.edu/">University of Washington</a> 
-    where my mentor was <a href="https://sites.math.washington.edu/~farbod/">Farbod Shokrieh</a>.
-    Before that I was  a graduate student at the <a href="http://lsa.umich.edu/math/">University of Michigan</a>
-    where my advisors were <a href="http://www-personal.umich.edu/~speyer">David Speyer</a> 
-    and <a href="https://dept.math.lsa.umich.edu/~lagarias/">Jeff Lagarias</a>.
-    <!-- I am currently on the <a href="jobs.html">academic job market</a>. -->
-    I was on the <a href="jobs.html">academic job market</a> in fall 2023.
-</p>
 
-<p>
-    Before graduate school I studied math at <a href="http://math.mit.edu/">MIT</a> 
-    and the <a href="https://www.mathinmoscow.org/">Math in Moscow</a> program.
-</p>
+    <!-- Beginning of About tab -->
+    <div id="About" class="tabcontent">
 
-<h3>Contact</h3>
-<table>
-    <tbody>
-    <tr>
-        <td> email: </td>
-        <td> hrichman (&#1072;t) ncts (dot) ntu (dot) edu (dot) tw</td>
-    </tr>
-    <tr>
-        <td> </td>
-        <td> hrichman (&#1072;t) alum (dot) mit (dot) edu</td>
-    </tr>
-    <tr>
-        <td> office: </td> 
-        <td> Room 402, Cosmology Building </td>
+      <div style="float:right" id="photo">
+        <image src="hike.jpg" width="330"/>
+    </div>
 
-    </tr>
-    <tr> 
-        <td> address: </td> 
-        <td>台北市 羅斯福路 4段 1號</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>台灣大學 次震宇宙館 503室</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td> Room 503, Cosmology Building </td>
-    </tr>
-    <tr>
-        <td></td>
-        <td> National Taiwan University </td>
-    </tr>
-    <tr>
-        <td></td>
-        <td> No. 1, Sec. 4, Roosevelt Rd. </td>
-    </tr>
-    <tr>
-        <td></td> 
-        <td> Taipei City 106, Taiwan (R.O.C.) </td>
-    </tr>
-    <tr><td></td></tr>
-    <tr>
-        <td> github: </td>
-        <td> <a href="https://github.com/harryrichman">harryrichman</a></td>
-    </tr>
-    </tbody>
-</table>
+    <p>
+    I am interested in problems in 
+    tropical geometry
+    (<a href="https://www.quantamagazine.org/tinkertoy-models-produce-new-geometric-insights-20180905/" style="color:black; text-decoration:none">what's that??</a>), 
+    phylogenetics,
+    combinatorics, 
+    and number theory.
+    </p>
 
-<h3>Teaching</h3>
-<div>
-    Spring 2022: <a href="https://canvas.uw.edu/courses/1517480">Math 208</a>
-    <br />
-    Winter 2022: Math 208
-    <br />
-    Winter 2022: WXML <a href="wxml-kagome.html">Counting spanning trees</a>
-    <br />
-    Autumn 2021: WXML <a href="wxml-kagome.html">Counting spanning trees</a>
-    <br />
-    Summer 2021: MREG <a href="rational-catalan.html">Rational Catalan combinatorics</a>
-    <br />
-	Spring 2021: Math 308 
-    <br />
-    Autumn 2020: <a href="https://sites.math.washington.edu/~m308/">Math 308</a> (linear algebra)
-    <br />
-    Winter 2019: <a href="116-w19.html">Math 116</a>,
-    <a href="origami.html">Origami on Lattices</a>
-    <br />
-    Winter 2018: Math 116
-    <br />
-    Fall 2016: <a href="http://www.math.lsa.umich.edu/courses/215">Math 215</a> (multivariable calculus)
-    <br />
-    Winter 2016: <a href="http://www.math.lsa.umich.edu/courses/116">Math 116</a>
-    <br />
-    Fall 2015: <a href="http://www.math.lsa.umich.edu/courses/216">Math 216</a> (differential equations)
-    <br />
-    Winter 2015: <a href="http://www.math.lsa.umich.edu/courses/116">Math 116</a> (calculus II)
-    <br />
-    Fall 2014: <a href="http://www.math.lsa.umich.edu/courses/115/">Math 115</a> (calculus I)
-</div>
+    <p>
+        I am currently a postdoc at <a href="https://ncts.ntu.edu.tw/">NCTS</a> mentored by <a href="https://scholar.lib.ntnu.edu.tw/en/persons/liang-chung-hsia">Liang-Chung Hsia</a>.
+        I previously held postdoc positions in the <a href="https://matsen.fredhutch.org/">Matsen group</a>, 
+        part of the 
+        <a href="https://www.fredhutch.org/en/research/divisions/public-health-sciences-division/research/computational-biology.html"
+        >Herbold Computational Biology Program</a>
+        at the <a href="https://www.fredhutch.org/en/research.html">Fred Hutch Cancer Center</a>,
+        and at the <a href="http://math.washington.edu/">University of Washington</a> 
+        where my mentor was <a href="https://sites.math.washington.edu/~farbod/">Farbod Shokrieh</a>.
+        Before that I was  a graduate student at the <a href="http://lsa.umich.edu/math/">University of Michigan</a>
+        where my advisors were <a href="http://www-personal.umich.edu/~speyer">David Speyer</a> 
+        and <a href="https://dept.math.lsa.umich.edu/~lagarias/">Jeff Lagarias</a>.
+        <!-- I am currently on the <a href="jobs.html">academic job market</a>. -->
+        I was on the <a href="jobs.html">academic job market</a> in fall 2023.
+    </p>
 
-<h3>Research</h3>
-My work can be found on 
-<a href="https://arxiv.org/a/0000-0002-0101-0521.html">arXiv</a>,
-<a href="https://scholar.google.com/citations?user=_D7ce2cAAAAJ&sortby=pubdate">Google Scholar</a>, 
-<a href="https://mathscinet.ams.org/mathscinet/MRAuthorID/1194208">MathSciNet</a>, 
-<a href="https://orcid.org/0000-0002-0101-0521">ORCID</a>,
-and <a href="https://zbmath.org/authors/richman.david-harry">zbMATH</a>.
+    <p>
+        Before graduate school I studied math at <a href="http://math.mit.edu/">MIT</a> 
+        and the <a href="https://www.mathinmoscow.org/">Math in Moscow</a> program.
+    </p>
 
-<h4>Preprints</h4>
-<ul>
-<!-- <ol start="16" reversed> -->
-    <li>
-        "Principal minors of tree distance matrices,"
-        coauthored with <a href="https://sites.math.washington.edu/~farbod/">Farbod Shokrieh</a> and <a href="https://wuchenxi.github.io/">Chenxi Wu</a>, 
-        submitted.
-        <br />
-        arXiv:<a href="https://arxiv.org/abs/2411.11488">2411.11488</a>
-        (<a href="papers/tree-distance.pdf">local link</a>)
-    </li>
+    <h3>Contact</h3>
+    <table>
+        <tbody>
+        <tr>
+            <td> email: </td>
+            <td> hrichman (&#1072;t) ncts (dot) ntu (dot) edu (dot) tw</td>
+        </tr>
+        <tr>
+            <td> </td>
+            <td> hrichman (&#1072;t) alum (dot) mit (dot) edu</td>
+        </tr>
+        <tr>
+            <td> office: </td> 
+            <td> Room 402, Cosmology Building </td>
 
-    <li>
-        "A Ricci flow on graphs from effective resistance,"
-        coauthored with <a href="https://aleyahdawkins.github.io/">A. Dawkins</a>, <a href="https://sites.google.com/udel.edu/vishal-gupta/home">V. Gupta</a>, <a href="https://mathdept.byu.edu/~mkempton/">M. Kempton</a>, W. Linz, <a href="https://www.uvm.edu/~jquail/">J. Quail</a>, and <a href="https://math.berkeley.edu/~zstier/">Z. Stier</a>,
-        submitted.
-        <br />
-        arXiv:<a href="https://arxiv.org/abs/2403.01151">2403.01151</a>
-    </li>
+        </tr>
+        <tr> 
+            <td> address: </td> 
+            <td>台北市 羅斯福路 4段 1號</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>台灣大學 次震宇宙館 503室</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td> Room 503, Cosmology Building </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td> National Taiwan University </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td> No. 1, Sec. 4, Roosevelt Rd. </td>
+        </tr>
+        <tr>
+            <td></td> 
+            <td> Taipei City 106, Taiwan (R.O.C.) </td>
+        </tr>
+        <tr><td></td></tr>
+        <tr>
+            <td> github: </td>
+            <td> <a href="https://github.com/harryrichman">harryrichman</a></td>
+        </tr>
+        </tbody>
+    </table>
 
-    <li>
-        "Node resistance curvature in Cartesian graph products,"
-        coauthored with <a href="https://aleyahdawkins.github.io/">A. Dawkins</a>, <a href="https://sites.google.com/udel.edu/vishal-gupta/home">V. Gupta</a>, <a href="https://mathdept.byu.edu/~mkempton/">M. Kempton</a>, W. Linz, <a href="https://www.uvm.edu/~jquail/">J. Quail</a>, and <a href="https://math.berkeley.edu/~zstier/">Z. Stier</a>,
-        submitted.
-        <br />
-        arXiv:<a href="https://arxiv.org/abs/2403.01037">2403.01037</a>
-    </li>
+    </div>
 
-    <!-- <li>
-        "Origami hexagon deformations and the flip graph,"
-        coauthored with Y. Liu,
-        in preparation.
-    </li> -->
+    <!-- Beginning of Teaching tab -->
+    <div id="Teaching" class="tabcontent">
+        <h3>Teaching</h3>
+        <div>
+            Spring 2022: <a href="https://canvas.uw.edu/courses/1517480">Math 208</a>
+            <br />
+            Winter 2022: Math 208
+            <br />
+            Winter 2022: WXML <a href="wxml-kagome.html">Counting spanning trees</a>
+            <br />
+            Autumn 2021: WXML <a href="wxml-kagome.html">Counting spanning trees</a>
+            <br />
+            Summer 2021: MREG <a href="rational-catalan.html">Rational Catalan combinatorics</a>
+            <br />
+            Spring 2021: Math 308 
+            <br />
+            Autumn 2020: <a href="https://sites.math.washington.edu/~m308/">Math 308</a> (linear algebra)
+            <br />
+            Winter 2019: <a href="116-w19.html">Math 116</a>,
+            <a href="origami.html">Origami on Lattices</a>
+            <br />
+            Winter 2018: Math 116
+            <br />
+            Fall 2016: <a href="http://www.math.lsa.umich.edu/courses/215">Math 215</a> (multivariable calculus)
+            <br />
+            Winter 2016: <a href="http://www.math.lsa.umich.edu/courses/116">Math 116</a>
+            <br />
+            Fall 2015: <a href="http://www.math.lsa.umich.edu/courses/216">Math 216</a> (differential equations)
+            <br />
+            Winter 2015: <a href="http://www.math.lsa.umich.edu/courses/116">Math 116</a> (calculus II)
+            <br />
+            Fall 2014: <a href="http://www.math.lsa.umich.edu/courses/115/">Math 115</a> (calculus I)
+        </div>
+    </div>
 
-    <li>
-        "The Möbius function of the poset of triangular numbers under divisibility,"
-        coauthored with Rohan Pandey, submitted.
-        <br />
-        arXiv:<a href="https://arxiv.org/abs/2402.07934">2402.07934</a>
-    </li>
+    <!-- Beginning of Research tab -->
+    <div id="Research" class="tabcontent">
+        <h3>Research</h3>
+        My work can be found on 
+        <a href="https://arxiv.org/a/0000-0002-0101-0521.html">arXiv</a>,
+        <a href="https://scholar.google.com/citations?user=_D7ce2cAAAAJ&sortby=pubdate">Google Scholar</a>, 
+        <a href="https://mathscinet.ams.org/mathscinet/MRAuthorID/1194208">MathSciNet</a>, 
+        <a href="https://orcid.org/0000-0002-0101-0521">ORCID</a>,
+        and <a href="https://zbmath.org/authors/richman.david-harry">zbMATH</a>.
 
-    <li>
-        "Counting two-forests and random cut size via potential theory,"
-        coauthored with <a href="https://sites.math.washington.edu/~farbod/">Farbod Shokrieh</a> and <a href="https://wuchenxi.github.io/">Chenxi Wu</a>,
-        submitted.
-        <br />
-        arXiv:<a href="https://arxiv.org/abs/2308.03859">2308.03859</a>
-    </li>
+        <h4>Preprints</h4>
+        <ul>
+        <!-- <ol start="16" reversed> -->
+            <li>
+                "Vector encoding of phylogenetic trees by ordered leaf attachment,"
+                coauthored with <a href="https://www.fredhutch.org/en/faculty-lab-directory/matsen-frederick.html">Erick Matsen</a> and <a href="https://zcrabbit.github.io/">Cheng Zhang</a>.
+                <br />
+                arxiv:<a href="https://arxiv.org/abs/2503.10169">2503.10169</a>
+            </li>
+            <li>
+                "Principal minors of tree distance matrices,"
+                coauthored with <a href="https://sites.math.washington.edu/~farbod/">Farbod Shokrieh</a> and <a href="https://wuchenxi.github.io/">Chenxi Wu</a>, 
+                submitted.
+                <br />
+                arXiv:<a href="https://arxiv.org/abs/2411.11488">2411.11488</a>
+                (<a href="papers/tree-distance.pdf">local link</a>)
+            </li>
 
-    <li>
-        "Tropical Weierstrass points and Weierstrass weights,"
-        coauthored with <a href="http://omid.amini.perso.math.cnrs.fr/index_en.html">Omid Amini</a> and <a href="https://perso.pages.math.cnrs.fr/users/lucas.gierczak/">Lucas Gierczak</a>,
-        submitted.
-        <br />
-        arXiv:<a href="https://arxiv.org/abs/2303.07729">2303.07729</a>
-    </li>    
+            <li>
+                "A Ricci flow on graphs from effective resistance,"
+                coauthored with <a href="https://aleyahdawkins.github.io/">A. Dawkins</a>, <a href="https://sites.google.com/udel.edu/vishal-gupta/home">V. Gupta</a>, <a href="https://mathdept.byu.edu/~mkempton/">M. Kempton</a>, W. Linz, <a href="https://www.uvm.edu/~jquail/">J. Quail</a>, and <a href="https://math.berkeley.edu/~zstier/">Z. Stier</a>,
+                submitted.
+                <br />
+                arXiv:<a href="https://arxiv.org/abs/2403.01151">2403.01151</a>
+            </li>
 
-</ul>
-<!-- </ol> -->
+            <li>
+                "Node resistance curvature in Cartesian graph products,"
+                coauthored with <a href="https://aleyahdawkins.github.io/">A. Dawkins</a>, <a href="https://sites.google.com/udel.edu/vishal-gupta/home">V. Gupta</a>, <a href="https://mathdept.byu.edu/~mkempton/">M. Kempton</a>, W. Linz, <a href="https://www.uvm.edu/~jquail/">J. Quail</a>, and <a href="https://math.berkeley.edu/~zstier/">Z. Stier</a>,
+                submitted.
+                <br />
+                arXiv:<a href="https://arxiv.org/abs/2403.01037">2403.01037</a>
+            </li>
 
-<h4>Published</h4>
-<ol reversed>
-    <li>
-        "The family of <em>a</em>-floor quotient partial orders,"
-        coauthored with <a href="http://www.math.lsa.umich.edu/~lagarias/">Jeffrey Lagarias</a>,
-        in <em>Proceedings of Combinatorial and Additive Number Theory VI</em> (2025), pp. 283-318.
-        <br />
-        arXiv:<a href="https://arxiv.org/abs/2403.04342">2403.04342</a>.
-        DOI:<a href="https://doi.org/10.1007/978-3-031-65064-2_15">10.1007/978-3-031-65064-2_15</a>
-    </li>
+            <!-- <li>
+                "Origami hexagon deformations and the flip graph,"
+                coauthored with Y. Liu,
+                in preparation.
+            </li> -->
 
-    <li>
-        "Lower rational approximations and Farey staircases,"
-        <em>Integers</em> 24 (2024), paper A37.
-    <br />
-    arXiv:<a href="https://arxiv.org/abs/2303.02935">2303.02935</a>.
-    DOI:<a href="https://doi.org/10.5281/zenodo.10944039">10.5281/zenodo.10944039</a>.
-    journal version:<a href="http://math.colgate.edu/~integers/y37/y37.pdf">link</a>.
-    </li>
+            <li>
+                "The Möbius function of the poset of triangular numbers under divisibility,"
+                coauthored with Rohan Pandey, submitted.
+                <br />
+                arXiv:<a href="https://arxiv.org/abs/2402.07934">2402.07934</a>
+            </li>
 
-    <li>
-        "The distribution of Weierstrass points on a tropical curve," 
-        <em>Selecta Mathematica</em> 30 (2024).
-    <br />
-    arXiv:<a href="https://arxiv.org/abs/1809.07920">1809.07920</a>.
-    DOI:<a href="https://doi.org/10.1007/s00029-024-00919-5">10.1007/s00029-024-00919-5</a>.
-    </li>
+            <li>
+                "Counting two-forests and random cut size via potential theory,"
+                coauthored with <a href="https://sites.math.washington.edu/~farbod/">Farbod Shokrieh</a> and <a href="https://wuchenxi.github.io/">Chenxi Wu</a>,
+                submitted.
+                <br />
+                arXiv:<a href="https://arxiv.org/abs/2308.03859">2308.03859</a>
+            </li>
 
-    <li>
-        "The floor quotient partial order,"
-        coauthored with <a href="http://www.math.lsa.umich.edu/~lagarias/">Jeffrey Lagarias</a>,
-        <em>Advances in Applied Mathematics</em> 153 (2024).
-    <br />
-    arXiv:<a href="https://arxiv.org/abs/2212.11689">2212.11689</a>.
-    DOI:<a href="https://doi.org/10.1016/j.aam.2023.102615">10.1016/j.aam.2023.102615</a>.
-    </li>
+            <li>
+                "Tropical Weierstrass points and Weierstrass weights,"
+                coauthored with <a href="http://omid.amini.perso.math.cnrs.fr/index_en.html">Omid Amini</a> and <a href="https://perso.pages.math.cnrs.fr/users/lucas.gierczak/">Lucas Gierczak</a>,
+                submitted.
+                <br />
+                arXiv:<a href="https://arxiv.org/abs/2303.07729">2303.07729</a>
+            </li>    
 
-    <li>
-        "The tropical Manin-Mumford conjecture,"  
-        <em>International Mathematics Research Notices</em> 2023.21 (2023), pp. 18714-18751.
-    <br />
-    arXiv:<a href="https://arxiv.org/abs/2112.00168">2112.00168</a>.
-    DOI:<a href="https://doi.org/10.1093/imrn/rnad098">10.1093/imrn/rnad098</a>.
-    </li>
+        </ul>
+        <!-- </ol> -->
 
-    <li>
-        "Counting tripods on the torus," 
-        coauthored with <a href="https://faculty.washington.edu/jathreya/">Jayadev S. Athreya</a> and <a href="http://userhome.brooklyn.cuny.edu/aulicino/">David Aulicino</a>,
-        <em>Arnold Mathematical Journal</em> 9 (2023), pp. 359-379.
-    <br />
-    arXiv:<a href="https://arxiv.org/abs/2111.01891">2111.01891</a>.
-    DOI:<a href="https://doi.org/10.1007/s40598-022-00216-z">10.1007/s40598-022-00216-z</a>.
-    </li>
+        <h4>Published</h4>
+        <ol reversed>
+            <li>
+                "The family of <em>a</em>-floor quotient partial orders,"
+                coauthored with <a href="http://www.math.lsa.umich.edu/~lagarias/">Jeffrey Lagarias</a>,
+                in <em>Proceedings of Combinatorial and Additive Number Theory VI</em> (2025), pp. 283-318.
+                <br />
+                arXiv:<a href="https://arxiv.org/abs/2403.04342">2403.04342</a>.
+                DOI:<a href="https://doi.org/10.1007/978-3-031-65064-2_15">10.1007/978-3-031-65064-2_15</a>
+            </li>
 
-    <li>
-        "Derangements and the p-adic incomplete gamma function," 
-        coauthored with <a href="https://andrewodesky.com/">Andrew O'Desky</a>,
-        <em>Transactions of the American Mathematical Society</em> 376 (2023), pp. 1065-1087.
-    <br />
-    arXiv:<a href="https://arxiv.org/abs/2012.04615">2012.04615</a>.
-    DOI:<a href="https://doi.org/10.1090/tran/8716">10.1090/tran/8716</a>.
-    </li>
+            <li>
+                "Lower rational approximations and Farey staircases,"
+                <em>Integers</em> 24 (2024), paper A37.
+            <br />
+            arXiv:<a href="https://arxiv.org/abs/2303.02935">2303.02935</a>.
+            DOI:<a href="https://doi.org/10.5281/zenodo.10944039">10.5281/zenodo.10944039</a>.
+            journal version:<a href="http://math.colgate.edu/~integers/y37/y37.pdf">link</a>.
+            </li>
 
-    <li>
-        "Dilated floor functions having nonnegative commutator II. Negative dilations,"
-        coauthored with <a href="http://www.math.lsa.umich.edu/~lagarias/">Jeffrey Lagarias</a>,
-        <em>Acta Arithmetica</em> 196.2 (2020), pp. 163-186.
-    <br />
-    arXiv:<a href="https://arxiv.org/abs/1907.09641">1907.09641</a>.
-    DOI:<a href="https://www.impan.pl/en/publishing-house/journals-and-series/acta-arithmetica/online/113707/">10.4064/aa190628-14-1</a>.
-    </li>
+            <li>
+                "The distribution of Weierstrass points on a tropical curve," 
+                <em>Selecta Mathematica</em> 30 (2024).
+            <br />
+            arXiv:<a href="https://arxiv.org/abs/1809.07920">1809.07920</a>.
+            DOI:<a href="https://doi.org/10.1007/s00029-024-00919-5">10.1007/s00029-024-00919-5</a>.
+            </li>
 
-    <li>
-        "Dilated floor functions having nonnegative commutator I. Positive and mixed sign dilations," 
-        coauthored with <a href="http://www.math.lsa.umich.edu/~lagarias/">Jeffrey Lagarias</a>,
-        <em>Acta Arithmetica</em> 187.3 (2019), pp. 271-299.
-        <!--
-        <a href="https://www.impan.pl/en/publishing-house/journals-and-series/acta-arithmetica/online/112759/">Online First article</a>
-        -->
-        <br />
-        arXiv:<a href="https://arxiv.org/abs/1806.00579">1806.00579</a>.
-        DOI:<a href="https://www.impan.pl/en/publishing-house/journals-and-series/acta-arithmetica/online/112759/">10.4064/aa180602-21-9</a>.
-    </li>
+            <li>
+                "The floor quotient partial order,"
+                coauthored with <a href="http://www.math.lsa.umich.edu/~lagarias/">Jeffrey Lagarias</a>,
+                <em>Advances in Applied Mathematics</em> 153 (2024).
+            <br />
+            arXiv:<a href="https://arxiv.org/abs/2212.11689">2212.11689</a>.
+            DOI:<a href="https://doi.org/10.1016/j.aam.2023.102615">10.1016/j.aam.2023.102615</a>.
+            </li>
+
+            <li>
+                "The tropical Manin-Mumford conjecture,"  
+                <em>International Mathematics Research Notices</em> 2023.21 (2023), pp. 18714-18751.
+            <br />
+            arXiv:<a href="https://arxiv.org/abs/2112.00168">2112.00168</a>.
+            DOI:<a href="https://doi.org/10.1093/imrn/rnad098">10.1093/imrn/rnad098</a>.
+            </li>
+
+            <li>
+                "Counting tripods on the torus," 
+                coauthored with <a href="https://faculty.washington.edu/jathreya/">Jayadev S. Athreya</a> and <a href="http://userhome.brooklyn.cuny.edu/aulicino/">David Aulicino</a>,
+                <em>Arnold Mathematical Journal</em> 9 (2023), pp. 359-379.
+            <br />
+            arXiv:<a href="https://arxiv.org/abs/2111.01891">2111.01891</a>.
+            DOI:<a href="https://doi.org/10.1007/s40598-022-00216-z">10.1007/s40598-022-00216-z</a>.
+            </li>
+
+            <li>
+                "Derangements and the p-adic incomplete gamma function," 
+                coauthored with <a href="https://andrewodesky.com/">Andrew O'Desky</a>,
+                <em>Transactions of the American Mathematical Society</em> 376 (2023), pp. 1065-1087.
+            <br />
+            arXiv:<a href="https://arxiv.org/abs/2012.04615">2012.04615</a>.
+            DOI:<a href="https://doi.org/10.1090/tran/8716">10.1090/tran/8716</a>.
+            </li>
+
+            <li>
+                "Dilated floor functions having nonnegative commutator II. Negative dilations,"
+                coauthored with <a href="http://www.math.lsa.umich.edu/~lagarias/">Jeffrey Lagarias</a>,
+                <em>Acta Arithmetica</em> 196.2 (2020), pp. 163-186.
+            <br />
+            arXiv:<a href="https://arxiv.org/abs/1907.09641">1907.09641</a>.
+            DOI:<a href="https://www.impan.pl/en/publishing-house/journals-and-series/acta-arithmetica/online/113707/">10.4064/aa190628-14-1</a>.
+            </li>
+
+            <li>
+                "Dilated floor functions having nonnegative commutator I. Positive and mixed sign dilations," 
+                coauthored with <a href="http://www.math.lsa.umich.edu/~lagarias/">Jeffrey Lagarias</a>,
+                <em>Acta Arithmetica</em> 187.3 (2019), pp. 271-299.
+                <!--
+                <a href="https://www.impan.pl/en/publishing-house/journals-and-series/acta-arithmetica/online/112759/">Online First article</a>
+                -->
+                <br />
+                arXiv:<a href="https://arxiv.org/abs/1806.00579">1806.00579</a>.
+                DOI:<a href="https://www.impan.pl/en/publishing-house/journals-and-series/acta-arithmetica/online/112759/">10.4064/aa180602-21-9</a>.
+            </li>
+            
+            <li>
+                "Dilated floor functions that commute," 
+                coauthored with <a href="http://www.math.lsa.umich.edu/~lagarias/">J. C. Lagarias</a> and <a href="https://www.math.purdue.edu/~murayama/">T. Murayama</a>,
+                <em>American Math. Monthly</em> 123.10 (2016), pp. 1033-1038.
+                <br />
+                arXiv:<a href="https://arxiv.org/abs/1611.05513">1611.05513</a>.
+                DOI:<a href="http://www.jstor.org/stable/10.4169/amer.math.monthly.123.10.1033">10.4169/amer.math.monthly.123.10.1033</a>.
+            </li>
+            
+        </ol>
+
+        <h4>Ph.D. thesis</h4>
+        <ol start="0">
+            <li>
+                "Weierstrass points and torsion points on tropical curves." 
+            <br />
+                official version: <a href="https://hdl.handle.net/2027.42/162903">link</a>
+                (<a href="papers/thesis.pdf">local link</a>) 
+            </li>
+        </ol>
+
+        <h4>Conference Proceedings</h4>
+        <ul>
+            <li>
+                FPSAC 2025, "Principal minors of tree distance matrices."
+            </li>
+            <li>
+                ICLR 2025,
+                with Tianyu Xie, Jiansi Gao, Frederick A. Matsen IV, Cheng Zhang,
+                "PhyloVAE: Unsupervised Learning of Phylogenetic Trees via Variational Autoencoders."
+                <br />
+                arxiv:<a href="https://arxiv.org/abs/2502.04730">2502.04730</a>
+            </li>
+            <li>
+                FPSAC 2022,
+                with Andrew O'Desky,
+                "Derangements and the p-Adic Incomplete Gamma Function."
+                <br />
+                online:<a href="https://www.mat.univie.ac.at/~slc/wpapers/FPSAC2022/81.html">link</a>
+            </li>
+            <li>
+                FPSAC 2019,
+                "The distribution of Weierstrass points on a tropical curve."
+                <br />
+                online:<a href="https://www.mat.univie.ac.at/~slc/wpapers/FPSAC2019/72.html">link</a>
+            </li>
+        </ul>
+
+    </div>
     
-    <li>
-        "Dilated floor functions that commute," 
-        coauthored with <a href="http://www.math.lsa.umich.edu/~lagarias/">J. C. Lagarias</a> and <a href="https://www.math.purdue.edu/~murayama/">T. Murayama</a>,
-        <em>American Math. Monthly</em> 123.10 (2016), pp. 1033-1038.
-        <br />
-        arXiv:<a href="https://arxiv.org/abs/1611.05513">1611.05513</a>.
-        DOI:<a href="http://www.jstor.org/stable/10.4169/amer.math.monthly.123.10.1033">10.4169/amer.math.monthly.123.10.1033</a>.
-    </li>
-    
-</ol>
 
-<h4>Ph.D. thesis</h4>
-<ol start="0">
-    <li>
-        "Weierstrass points and torsion points on tropical curves." 
-    <br />
-        official version: <a href="https://hdl.handle.net/2027.42/162903">link</a>
-        (<a href="papers/thesis.pdf">local link</a>) 
-    </li>
-</ol>
+    <!-- Beginning of Notes tab -->
+    <div id="Notes" class="tabcontent">
 
-<br />
 <h3>Notes and Presentations</h3>
 <ul>
     <li>
@@ -323,6 +385,7 @@ and <a href="https://zbmath.org/authors/richman.david-harry">zbMATH</a>.
         "Phylogenetic trees to integer vectors,"
         July 2023
         <a href="slides/bloom-retreat-slides/index.html">slides</a>
+        <a href="">tldr slides</a>
         <a href="notes/ola-code-poster.pdf">poster</a>
     </li>
 
@@ -413,8 +476,11 @@ and <a href="https://zbmath.org/authors/richman.david-harry">zbMATH</a>.
         </li>
     
     </ul>
+</div>
 
-<br />
+    <!-- Beginning of Misc tab -->
+    <div id="Misc" class="tabcontent">
+
 <h3>Links</h3>
 
 <h4>
@@ -487,6 +553,28 @@ and <a href="https://zbmath.org/authors/richman.david-harry">zbMATH</a>.
         (43., 35., 31., 10., 28., 8., 11., 14., 41., 26., 21., 18.)
         </td></tr>
     </tbody></table>
+</div>
 
 
+    <script>
+        
+
+    // Modified openTab function to handle map initialization
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Initialize default tab
+    document.getElementById("defaultOpen").click();
+    </script>
 </body>
