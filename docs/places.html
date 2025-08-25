@@ -370,209 +370,208 @@
     });
 
 
-          // Add markers for previous visits with proper wrapping
-          previousVisits.forEach(place => {
-            // Create marker with wrapped coordinates
-            const wrappedLatLng = L.latLng(place.lat, place.lng, true);  // true enables wrapping
-            const marker = L.marker(wrappedLatLng, {
-              // Enable marker wrapping
-              wrapAroundAntimeridian: true
-            });
+    // Add markers for previous visits
+    previousVisits.forEach(place => {
+      // Create marker with wrapped coordinates
+      const wrappedLatLng = L.latLng(place.lat, place.lng, true);  // true enables wrapping
+      const marker = L.marker(wrappedLatLng, {
+        // Enable marker wrapping
+        wrapAroundAntimeridian: true
+      });
 
-            // Create styled popup content
-            let popupContent = `
-              <div style="font-family: Arial, sans-serif;">
-                <div style="font-weight: 500;">${place.name}</div>
-                <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
-                  ${place.period}
-                </div>
-                <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
-                  ${place.inst}
-                </div>
-                <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
-                  ${place.city}
-                </div>
-              </div>
-            `;
+      // Create styled popup content
+      let popupContent = `
+        <div style="font-family: Arial, sans-serif;">
+          <div style="font-weight: 500;">${place.name}</div>
+          <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
+            ${place.period}
+          </div>
+          <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
+            ${place.inst}
+          </div>
+          <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
+            ${place.city}
+          </div>
+        </div>
+      `;
 
-            // Add popup with location info
-            marker.bindPopup(popupContent);
+      // Add popup with location info
+      marker.bindPopup(popupContent);
 
-            // Add marker to map
-            let mapMarker = marker.addTo(locationsMap);
-            // Adjust color to light blue
-            mapMarker._icon.style.filter = "saturate(50%) brightness(120%)";
+      // Add marker to map
+      let mapMarker = marker.addTo(locationsMap);
+      // Adjust color to light blue
+      mapMarker._icon.style.filter = "saturate(50%) brightness(120%)";
 
-            // Show popup when map-button next to list name is clicked
-            document.getElementById(`${place.name.replaceAll(" ", "")}-button`).addEventListener("click", function () {
-                marker.openPopup();
-            });
-          });
+      // Show popup when map-button next to list name is clicked
+      document.getElementById(`${place.name.replaceAll(" ", "")}-button`).addEventListener("click", function () {
+          marker.openPopup();
+      });
+    });
           
-          // Add markers for previous affiliations with proper wrapping
-          previousAffiliations.forEach(place => {
-            // Create marker with wrapped coordinates
-            const wrappedLatLng = L.latLng(place.lat, place.lng, true);  // true enables wrapping
+    // Add markers for previous affiliations
+    previousAffiliations.forEach(place => {
+      // Create marker with wrapped coordinates
+      const wrappedLatLng = L.latLng(place.lat, place.lng, true);  // true enables wrapping
 
-            const marker = L.marker(wrappedLatLng, {
-              icon: greenIcon,
-              // Enable marker wrapping
-              wrapAroundAntimeridian: true,
-              // Make the marker stay on top
-              zIndexOffset: 500
-            });
+      const marker = L.marker(wrappedLatLng, {
+        icon: greenIcon,
+        // Enable marker wrapping
+        wrapAroundAntimeridian: true,
+        // Make the marker stay on top
+        zIndexOffset: 500
+      });
 
-            // Create styled popup content
-            let popupContent = `
-              <div style="font-family: Arial, sans-serif;">
-                <div style="font-weight: 500;">${place.name}</div>
-                <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
-                  ${place.event}
-                </div>
-                <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
-                  ${place.period}
-                </div>  
-                <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
-                  ${place.city}
-                </div>
-              </div>
-            `;
+      // Create styled popup content
+      let popupContent = `
+        <div style="font-family: Arial, sans-serif;">
+          <div style="font-weight: 500;">${place.name}</div>
+          <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
+            ${place.event}
+          </div>
+          <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
+            ${place.period}
+          </div>  
+          <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
+            ${place.city}
+          </div>
+        </div>
+      `;
 
-            // Add popup with location info
-            marker.bindPopup(popupContent);
+      // Add popup with location info
+      marker.bindPopup(popupContent);
 
-            // Add marker to map
-            let mapMarker = marker.addTo(locationsMap);
-            // Adjust color saturation to light green
-            mapMarker._icon.style.filter = "saturate(40%) brightness(130%)";
+      // Add marker to map
+      let mapMarker = marker.addTo(locationsMap);
+      // Adjust color saturation to light green
+      mapMarker._icon.style.filter = "saturate(40%) brightness(130%)";
 
-            // Show popup when map-button next to list name is clicked
-            document.getElementById(`${place.name.replaceAll(" ", "")}-button`).addEventListener("click", function () {
-                marker.openPopup();
-            });
-          });
+      // Show popup when map-button next to list name is clicked
+      document.getElementById(`${place.name.replaceAll(" ", "")}-button`).addEventListener("click", function () {
+          marker.openPopup();
+      });
+    });
 
-      // Add markers for future conferences with proper wrapping
-          futureConferences.forEach(place => {
-            // Create marker with wrapped coordinates
-            const wrappedLatLng = L.latLng(place.lat, place.lng, true);  // true enables wrapping
+    // Add markers for future conferences with proper wrapping
+    futureConferences.forEach(place => {
+      // Create marker with wrapped coordinates
+      const wrappedLatLng = L.latLng(place.lat, place.lng, true);  // true enables wrapping
 
-            const marker = L.marker(wrappedLatLng, {
-              //icon: violetIcon,
-              // Enable marker wrapping
-              wrapAroundAntimeridian: true,
-              zIndexOffset: 300,
-            });
+      const marker = L.marker(wrappedLatLng, {
+        //icon: violetIcon,
+        // Enable marker wrapping
+        wrapAroundAntimeridian: true,
+        zIndexOffset: 300,
+      });
 
-            // Create styled popup content
-            let popupContent = `
-              <div style="font-family: Arial, sans-serif;">
-                <div style="font-weight: 500;">${place.name}</div>
-                <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
-                  ${place.period}
-                </div>
-              </div>
-            `;
+      // Create styled popup content
+      let popupContent = `
+        <div style="font-family: Arial, sans-serif;">
+          <div style="font-weight: 500;">${place.name}</div>
+          <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
+            ${place.period}
+          </div>
+        </div>
+      `;
 
-            // Add popup with location info
-            marker.bindPopup(popupContent);
+      // Add popup with location info
+      marker.bindPopup(popupContent);
 
-            // Add marker to map
-            let mapMarker = marker.addTo(locationsMap);
-            // Adjust color saturation to light violet
-            mapMarker._icon.style.filter = "hue-rotate(25deg) saturate(20%) brightness(150%)";
-          });
+      // Add marker to map
+      let mapMarker = marker.addTo(locationsMap);
+      // Adjust color saturation to light violet
+      mapMarker._icon.style.filter = "hue-rotate(25deg) saturate(20%) brightness(150%)";
+    });
           
-          // Add marker for current affiliations with proper wrapping
-          currentAffiliation.forEach(place => {
-            // Create marker with wrapped coordinates
-            const wrappedLatLng = L.latLng(place.lat, place.lng, true);  // true enables wrapping
+    // Add marker for current affiliations with proper wrapping
+    currentAffiliation.forEach(place => {
+      // Create marker with wrapped coordinates
+      const wrappedLatLng = L.latLng(place.lat, place.lng, true);  // true enables wrapping
 
-            const marker = L.marker(wrappedLatLng, {
-              icon: violetIcon,
-              // Enable marker wrapping
-              wrapAroundAntimeridian: true,
-              // Make the marker stay on top
-              zIndexOffset: 500
-            });
+      const marker = L.marker(wrappedLatLng, {
+        icon: violetIcon,
+        // Enable marker wrapping
+        wrapAroundAntimeridian: true,
+        // Make the marker stay on top
+        zIndexOffset: 500
+      });
 
-            // Create styled popup content
-            let popupContent = `
-              <div style="font-family: Arial, sans-serif;">
-                <div style="font-weight: 500;">${place.name}</div>
-                <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
-                  ${place.event}
-                </div>
-                <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
-                  ${place.period}
-                </div>  
-                <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
-                  ${place.city}
-                </div>
-              </div>
-            `;
+      // Create styled popup content
+      let popupContent = `
+        <div style="font-family: Arial, sans-serif;">
+          <div style="font-weight: 500;">${place.name}</div>
+          <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
+            ${place.event}
+          </div>
+          <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
+            ${place.period}
+          </div>  
+          <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
+            ${place.city}
+          </div>
+        </div>
+      `;
 
-            // Add popup with location info
-            marker.bindPopup(popupContent);
+      // Add popup with location info
+      marker.bindPopup(popupContent);
 
-            // Add marker to map
-            let mapMarker = marker.addTo(locationsMap);
-            // Adjust color saturation to dark green
-            // mapMarker._icon.style.filter = "saturate(75%) brightness(85%)";
-            mapMarker._icon.style.filter = "hue-rotate(-130deg) brightness(115%)";
+      // Add marker to map
+      let mapMarker = marker.addTo(locationsMap);
+      // Adjust color saturation to dark green
+      // mapMarker._icon.style.filter = "saturate(75%) brightness(85%)";
+      mapMarker._icon.style.filter = "hue-rotate(-130deg) brightness(115%)";
 
-            // Show popup when map-button next to list name is clicked
-            document.getElementById(`${place.name.replaceAll(" ", "")}-button`).addEventListener("click", function () {
-                marker.openPopup();
-            });
-          });
+      // Show popup when map-button next to list name is clicked
+      document.getElementById(`${place.name.replaceAll(" ", "")}-button`).addEventListener("click", function () {
+          marker.openPopup();
+      });
+    });
 
 
-          // Add legend
-          const legend = L.control({position: 'bottomright'});
-          legend.onAdd = function (map) {
-            const div = L.DomUtil.create('div', 'legend');
-            div.innerHTML = 
-              '<i style="background: #238443"></i>Current affiliation<br>' +
-              '<i style="background: #78c679"></i>Past affiliations<br>' +
-              '<i style="background: #74a9cf"></i>Past conferences, workshops, etc.<br>' +
-              '<i style="background: #bdc9e1"></i>Future conferences, workshops, etc.';
-            return div;
-          };
-          legend.addTo(locationsMap);
+    // Add legend
+    const legend = L.control({position: 'bottomright'});
+    legend.onAdd = function (map) {
+      const div = L.DomUtil.create('div', 'legend');
+      div.innerHTML = 
+        '<i style="background: #238443"></i>Current affiliation<br>' +
+        '<i style="background: #78c679"></i>Past affiliations<br>' +
+        '<i style="background: #74a9cf"></i>Past conferences, workshops, etc.<br>' +
+        '<i style="background: #bdc9e1"></i>Future conferences, workshops, etc.';
+      return div;
+    };
+    legend.addTo(locationsMap);
 
-          // Handle window resize
-          window.addEventListener('resize', () => {
-            if (document.getElementById('Locations').style.display !== 'none') {
-              locationsMap.invalidateSize();
-            }
-          });
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      if (document.getElementById('Locations').style.display !== 'none') {
+        locationsMap.invalidateSize();
+      }
+    });
 
-          // Add move end handler to ensure markers stay visible
-          locationsMap.on('moveend', () => {
-            locationsMap.eachLayer((layer) => {
-              if (layer instanceof L.Marker) {
-                const pos = layer.getLatLng();
-                layer.setLatLng(pos, { wrap: true });  // Re-wrap coordinates after movement
-              }
-            });
-          });
-
-        // show coordinates when clicking on map
-        const coord_popup = L.popup()
-            .setLatLng([0, 0])
-            .setContent('Location')
-    
-        const onMapClick = (map, popup, e) => {
-            popup
-                .setLatLng(e.latlng)
-                .setContent(`Location ${e.latlng.toString()}`)
-                .openOn(map);
+    // Add move end handler to ensure markers stay visible
+    locationsMap.on('moveend', () => {
+      locationsMap.eachLayer((layer) => {
+        if (layer instanceof L.Marker) {
+          const pos = layer.getLatLng();
+          layer.setLatLng(pos, { wrap: true });  // Re-wrap coordinates after movement
         }
+      });
+    });
+
+    // show coordinates when clicking on map
+    const coord_popup = L.popup()
+        .setLatLng([0, 0])
+        .setContent('Location')
+
+    const onMapClick = (map, popup, e) => {
+        popup.setLatLng(e.latlng)
+          .setContent(`Location ${e.latlng.toString()}`)
+          .openOn(map);
+    }
     
-        locationsMap.on('click', e => {
-          if (event.ctrlKey) {onMapClick(locationsMap, coord_popup, e)}
-        });
+    locationsMap.on('click', e => {
+      if (event.ctrlKey) {onMapClick(locationsMap, coord_popup, e)}
+    });
 
 
 
@@ -688,6 +687,6 @@
         // locationsMap.on('click', e => onMapClick(locationsMap, popup1, e));
         map_short.on('click', e => onMapClick2(map_short, popup2, e));
     
-    </script>
+  </script>
     
 </body>
