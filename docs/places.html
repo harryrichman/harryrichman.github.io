@@ -162,9 +162,9 @@
             lat: 37.8798,
             lng: 237.7556,
             name: "Gaps between primes and analytic number theory",
-            inst: "MSRI",
+            inst: "MSRI / SLMath",
             city: "Berkeley, USA",
-            period: "Summer 2015",
+            period: "July 2015",
         },
         {
             lat: 51.0800,
@@ -172,7 +172,7 @@
             name: "Explicit Methods for Abelian Varieties",
             inst: "University of Calgary",
             city: "Calgary, Canada",
-            period: "Summer 2016",
+            period: "June 2016",
         },
         {
             lat: 43.6589,
@@ -180,7 +180,7 @@
             name: "Combinatorial Algebraic Geometry",
             inst: "Fields Institute",
             city: "Toronto, Canada",
-            period: "Summer 2016",
+            period: "July 2016",
         },
         {
             lat: 37.5929,
@@ -196,7 +196,7 @@
             name: "Tropical geometry, logarithmic geometry, and curve counting",
             inst: "Stockholm University",
             city: "Stockholm, Sweden",
-            period: "Summer 2017",
+            period: "August 2017",
         },
         {
             lat: 46.0494,
@@ -204,7 +204,7 @@
             name: "FPSAC 2019",
             inst: "University of Ljubljana",
             city: "Ljubljana, Slovenia",
-            period: "Summer 2019",
+            period: "July 2019",
         },
         {
             lat: 46.9504,
@@ -212,7 +212,7 @@
             name: "SIAM Applied Algebraic Geometry",
             inst: "University of Bern",
             city: "Bern, Switzerland",
-            period: "2019",
+            period: "July 2019",
         },
         {
             lat: 13.0174,
@@ -230,12 +230,12 @@
             city: "France",
             period: "August 2022",
         },
-        {
-          lat: 0,
-          lng: 0,
+        { //42.65923029287107, -78.40059496631612
+          lat: 42.6593,
+          lng: 281.5994,
           name: "Curvature on graphs",
-          inst: "AMS MRC",
-          city: "Beaver Hollow, USA",
+          inst: "AMS MRC - Beaver Hollow Conference Center",
+          city: "Java Center, USA",
           period: "May 2023",
         },
         {
@@ -255,6 +255,22 @@
             period: "September 2024",
         },
         {
+            lat: 37.8798,
+            lng: 237.7556,
+            name: "AI for Mathematics and Theoretical CS",
+            inst: "MSRI / SLMath",
+            city: "Berkeley, USA",
+            period: "April 2025",
+        },
+        {
+            lat: 41.8240,
+            lng: 288.5930,
+            name: "Autoformalization for Mathematicians",
+            inst: "ICERM",
+            city: "Providence, USA",
+            period: "April 2025",
+        },
+        {
             lat: 22.6258,
             lng: 120.2663,
             name: "ILAS 2025",
@@ -272,12 +288,19 @@
         },
         ];
         const futureConferences = [
+        { //22.99913274738787, 120.2171353677342
+          lat: 22.9991, 
+          lng: 120.2171, 
+          name: "Algebraic geometry",
+          inst: "National Chung Keng University",
+          period: "10 - 14 November 2025"
+        },
         { 
           lat: 19.9969, 
           lng: 204.2171, 
           name: "Hawaii - surfing",
           period: "10 - 14 November 2025"
-        }
+        },
       ];
 
       // Populate list of affiliations
@@ -361,10 +384,10 @@
               <div style="font-family: Arial, sans-serif;">
                 <div style="font-weight: 500;">${place.name}</div>
                 <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
-                  ${place.inst}
+                  ${place.period}
                 </div>
                 <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
-                  ${place.period}
+                  ${place.inst}
                 </div>
                 <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
                   ${place.city}
