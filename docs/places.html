@@ -77,297 +77,297 @@
 
   </div>
 
-    <div>
-    Places I have visited short-term:
-    <div id="map-short" style="height:600px; width:1000px"></div>
-    </div>
+  <div>
+  Places I have visited short-term:
+  <div id="map-short" style="height:600px; width:1000px"></div>
+  </div>
 
-    <script>
-        const currentAffiliation = [{ 
-          lat: 25.0218, 
-          lng: 121.5374, 
-          name: "NCTS, National Taiwan University",
-          city: "Taipei, Taiwan",
-          position: "Postdoctoral fellow",
-          period: "October 2024 - now",
-          event: "Postdoc"
-        }];
-        const previousAffiliations = [
-        { 
-          lat: 42.3591, 
-          lng: 288.9098, 
-          name: "Massachusetts Institute of Technology",
-          city: "Cambridge, USA",
-          period: "September 2009 - June 2013",
-          event: "Bachelor"
-        },
-        { 
-          lat: 55.7465,
-          lng: 37.5898, 
-          name: "Independent University of Moscow",
-          city: "Moscow, Russia",
-          period: "September 2013 - May 2014",
-          event: "Study abroad"
-        },
-        {
-            lat: 42.2759,
-            lng: 276.2648,
-            name: "University of Michigan",
-            city: "Ann Arbor, USA",
-            period: "September 2014 - August 2020",
-            event: "PhD"
-        },
-        {
-            lat: 47.6573,
-            lng: 237.6960,
-            name: "University of Washington",
-            city: "Seattle, USA",
-            period: "October 2020 - September 2022",
-            event: "Postdoc",
-        },
-        {
-            lat: 47.6312,
-            lng: 237.6726,
-            name: "Fred Hutch Cancer Center",
-            city: "Seattle, USA",
-            period: "March 2023 - September 2024",
-            event: "Postdoc"
-        },
-        ]
+  <script>
+    const currentAffiliation = [{ 
+      lat: 25.0219, 
+      lng: 121.5374, 
+      name: "NCTS, National Taiwan University",
+      city: "Taipei, Taiwan",
+      position: "Postdoctoral fellow",
+      period: "October 2024 - now",
+      event: "Postdoc"
+    }];
+    const previousAffiliations = [
+      { 
+        lat: 42.3591, 
+        lng: 288.9098, 
+        name: "Massachusetts Institute of Technology",
+        city: "Cambridge, USA",
+        period: "September 2009 - June 2013",
+        event: "Bachelor"
+      },
+      { 
+        lat: 55.7465,
+        lng: 37.5898, 
+        name: "Independent University of Moscow",
+        city: "Moscow, Russia",
+        period: "September 2013 - May 2014",
+        event: "Study abroad"
+      },
+      {
+        lat: 42.2759,
+        lng: 276.2648,
+        name: "University of Michigan",
+        city: "Ann Arbor, USA",
+        period: "September 2014 - August 2020",
+        event: "PhD"
+      },
+      {
+        lat: 47.6573,
+        lng: 237.6960,
+        name: "University of Washington",
+        city: "Seattle, USA",
+        period: "October 2020 - September 2022",
+        event: "Postdoc",
+      },
+      {
+        lat: 47.6312,
+        lng: 237.6726,
+        name: "Fred Hutch Cancer Center",
+        city: "Seattle, USA",
+        period: "March 2023 - September 2024",
+        event: "Postdoc"
+      },
+    ]
 
-        const previousVisits = [
-        {
-            lat: 0,
-            lng: 0,
-            name: "Name",
-            city: "city",
-            period: "year",
-        },
-        { 
-          lat: 44.9745, 
-          lng: 266.7653, 
-          name: "University of Minnesota",
-          city: "Minneapolis, USA",
-          period: "Summer 2012",
-        },
-        {
-            lat: 32.2318,
-            lng: 249.0466,
-            name: "Arithmetic of Higher-Dimensional Varieties",
-            inst: "University of Arizona",
-            city: "Tucson, USA",
-            period: "March 2015",
-        },
-        {
-            lat: 37.8798,
-            lng: 237.7556,
-            name: "Gaps between primes and analytic number theory",
-            inst: "MSRI / SLMath",
-            city: "Berkeley, USA",
-            period: "July 2015",
-        },
-        {
-            lat: 51.0800,
-            lng: 245.8721,
-            name: "Explicit Methods for Abelian Varieties",
-            inst: "University of Calgary",
-            city: "Calgary, Canada",
-            period: "June 2016",
-        },
-        {
-            lat: 43.6589,
-            lng: 280.6024,
-            name: "Combinatorial Algebraic Geometry",
-            inst: "Fields Institute",
-            city: "Toronto, Canada",
-            period: "July 2016",
-        },
-        {
-            lat: 37.5929,
-            lng: 127.0457,
-            name: "Mirror symmetry, tropical geometry, and GKZ A-philosophy",
-            inst: "Korea Institute for Advanced Study (KIAS)",
-            city: "Seoul, Korea",
-            period: "March 2017",
-        },
-        {
-            lat: 59.3659,
-            lng: 18.0592,
-            name: "Tropical geometry, logarithmic geometry, and curve counting",
-            inst: "Stockholm University",
-            city: "Stockholm, Sweden",
-            period: "August 2017",
-        },
-        {
-            lat: 46.0494,
-            lng: 14.5041,
-            name: "FPSAC 2019",
-            inst: "University of Ljubljana",
-            city: "Ljubljana, Slovenia",
-            period: "July 2019",
-        },
-        {
-            lat: 46.9504,
-            lng: 7.4382,
-            name: "SIAM Applied Algebraic Geometry",
-            inst: "University of Bern",
-            city: "Bern, Switzerland",
-            period: "July 2019",
-        },
-        {
-            lat: 13.0174,
-            lng: 77.5659,
-            name: "FPSAC 2022",
-            inst: "Indian Institute of Science (IISc)",
-            city: "Bangalore, India",
-            period: "July 2022",
-        },
-        {
-            lat: 48.7144,
-            lng: 2.2113,
-            name: "Omid Amini research visit",
-            inst: "École Polytechnique",
-            city: "France",
-            period: "August 2022",
-        },
-        { //42.65923029287107, -78.40059496631612
-          lat: 42.6593,
-          lng: 281.5994,
-          name: "Curvature on graphs",
-          inst: "AMS MRC - Beaver Hollow Conference Center",
-          city: "Java Center, USA",
-          period: "May 2023",
-        },
-        {
-            lat: 51.1725,
-            lng: 244.4364,
-            name: "Combinatorics of moduli of curves",
-            inst: "BIRS",
-            city: "Banff, Canada",
-            period: "July 2024",
-        },
-        {
-            lat: 41.8240,
-            lng: 288.5930,
-            name: "Phylogenetics",
-            inst: "ICERM",
-            city: "Providence, USA",
-            period: "September 2024",
-        },
-        {
-            lat: 37.8798,
-            lng: 237.7556,
-            name: "AI for Mathematics and Theoretical CS",
-            inst: "MSRI / SLMath",
-            city: "Berkeley, USA",
-            period: "April 2025",
-        },
-        {
-            lat: 41.8240,
-            lng: 288.5930,
-            name: "Autoformalization for Mathematicians",
-            inst: "ICERM",
-            city: "Providence, USA",
-            period: "April 2025",
-        },
-        {
-            lat: 22.6258,
-            lng: 120.2663,
-            name: "ILAS 2025",
-            inst: "National Sun Yat-Sen University",
-            city: "Kaohsiung, Taiwan",
-            period: "June 2025",
-        },
-        {
-            lat: 43.7070,
-            lng: 141.3470,
-            name: "FPSAC 2025",
-            inst: "Hokkaido University",
-            city: "Sapporo, Japan",
-            period: "July 2025",
-        },
-        ];
-        const futureConferences = [
-        { //22.99913274738787, 120.2171353677342
-          lat: 22.9991, 
-          lng: 120.2171, 
-          name: "Algebraic geometry",
-          inst: "National Chung Keng University",
-          period: "10 - 14 November 2025"
-        },
-        { 
-          lat: 19.9969, 
-          lng: 204.2171, 
-          name: "Hawaii - surfing",
-          period: "10 - 14 November 2025"
-        },
-      ];
+    const previousVisits = [
+      // {
+      //   lat: 0,
+      //   lng: 0,
+      //   name: "Name",
+      //   city: "city",
+      //   period: "year",
+      // },
+      { 
+        lat: 44.9747, 
+        lng: 266.7653, 
+        name: "University of Minnesota",
+        city: "Minneapolis, USA",
+        period: "Summer 2012",
+      },
+      {
+        lat: 32.2318,
+        lng: 249.0466,
+        name: "Arithmetic of Higher-Dimensional Varieties",
+        inst: "University of Arizona",
+        city: "Tucson, USA",
+        period: "March 2015",
+      },
+      {
+        lat: 37.8799,
+        lng: 237.7556,
+        name: "Gaps between primes and analytic number theory",
+        inst: "MSRI / SLMath",
+        city: "Berkeley, USA",
+        period: "July 2015",
+      },
+      {
+        lat: 51.0800,
+        lng: 245.8721,
+        name: "Explicit Methods for Abelian Varieties",
+        inst: "University of Calgary",
+        city: "Calgary, Canada",
+        period: "June 2016",
+      },
+      {
+        lat: 43.6589,
+        lng: 280.6024,
+        name: "Combinatorial Algebraic Geometry",
+        inst: "Fields Institute",
+        city: "Toronto, Canada",
+        period: "July 2016",
+      },
+      {
+        lat: 37.5929,
+        lng: 127.0457,
+        name: "Mirror symmetry, tropical geometry, and GKZ A-philosophy",
+        inst: "Korea Institute for Advanced Study (KIAS)",
+        city: "Seoul, Korea",
+        period: "March 2017",
+      },
+      {
+        lat: 59.3584,
+        lng: 18.0538,
+        name: "Tropical geometry, logarithmic geometry, and curve counting",
+        inst: "Stockholm University",
+        city: "Stockholm, Sweden",
+        period: "August 2017",
+      },
+      {
+        lat: 46.0515,
+        lng: 14.5109,
+        name: "FPSAC 2019",
+        inst: "University of Ljubljana",
+        city: "Ljubljana, Slovenia",
+        period: "July 2019",
+      },
+      {
+        lat: 46.9544,
+        lng: 7.4303,
+        name: "SIAM Applied Algebraic Geometry",
+        inst: "University of Bern",
+        city: "Bern, Switzerland",
+        period: "July 2019",
+      },
+      {
+        lat: 13.0169,
+        lng: 77.5674,
+        name: "FPSAC 2022",
+        inst: "Indian Institute of Science (IISc)",
+        city: "Bangalore, India",
+        period: "July 2022",
+      },
+      {
+        lat: 48.7142,
+        lng: 2.2086,
+        name: "Omid Amini research visit",
+        inst: "École Polytechnique",
+        city: "France",
+        period: "August 2022",
+      },
+      { //42.65923029287107, -78.40059496631612
+        lat: 42.6587,
+        lng: 281.5997,
+        name: "Curvature on graphs",
+        inst: "AMS MRC - Beaver Hollow Conference Center",
+        city: "Java Center, USA",
+        period: "May 2023",
+      },
+      {
+          lat: 51.1725,
+          lng: 244.4364,
+          name: "Combinatorics of moduli of curves",
+          inst: "BIRS",
+          city: "Banff, Canada",
+          period: "July 2024",
+      },
+      {
+          lat: 41.8242,
+          lng: 288.5930,
+          name: "Phylogenetics",
+          inst: "ICERM",
+          city: "Providence, USA",
+          period: "September 2024",
+      },
+      {
+          lat: 37.8799,
+          lng: 237.7556,
+          name: "AI for Mathematics and Theoretical CS",
+          inst: "MSRI / SLMath",
+          city: "Berkeley, USA",
+          period: "April 2025",
+      },
+      {
+          lat: 41.8242,
+          lng: 288.5930,
+          name: "Autoformalization for Mathematicians",
+          inst: "ICERM",
+          city: "Providence, USA",
+          period: "April 2025",
+      },
+      {
+        lat: 22.6258,
+        lng: 120.2663,
+        name: "ILAS 2025",
+        inst: "National Sun Yat-Sen University",
+        city: "Kaohsiung, Taiwan",
+        period: "June 2025",
+      },
+      { //43.07812451867423, 141.3401877168243
+        lat: 43.0708,
+        lng: 141.3470,
+        name: "FPSAC 2025",
+        inst: "Hokkaido University",
+        city: "Sapporo, Japan",
+        period: "July 2025",
+      },
+    ];
+    const futureConferences = [
+      { //22.99913274738787, 120.2171353677342
+        lat: 22.9991, 
+        lng: 120.2171, 
+        name: "Algebraic geometry",
+        inst: "National Chung Keng University",
+        period: "10 - 14 November 2025"
+      },
+      // { 
+      //   lat: 19.9969, 
+      //   lng: 204.2171, 
+      //   name: "Hawaii - surfing",
+      //   period: "10 - 14 November 2025"
+      // },
+    ];
 
-      // Populate list of affiliations
-        const affiliationList = document.getElementById("affiliation-list");
-        currentAffiliation.concat(previousAffiliations.reverse()).forEach(place => {
-            const listItem = document.createElement("li");
-            listItem.innerHTML = `<button id="${place.name.replaceAll(" ","")}-button">🌎?</button> ${place.name}<br />
-            &emsp;${place.period}`;
-            affiliationList.appendChild(listItem);
-        });
+    // Populate list of affiliations
+    const affiliationList = document.getElementById("affiliation-list");
+    currentAffiliation.concat(previousAffiliations.reverse()).forEach(place => {
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `<button id="${place.name.replaceAll(" ","")}-button">🌎?</button> ${place.name}<br />
+        &emsp;${place.period}`;
+        affiliationList.appendChild(listItem);
+    });
 
-      // Populate list of visits
-        const visitList = document.getElementById("visit-list");
-        previousVisits.reverse().forEach(place => {
-            const listItem = document.createElement("li");
-            listItem.innerHTML = `<button id="${place.name.replaceAll(" ","")}-button">🌎?</button> ${place.name} - ${place.period}`;
-            visitList.appendChild(listItem);
-        });
+    // Populate list of visits
+    const visitList = document.getElementById("visit-list");
+    previousVisits.reverse().forEach(place => {
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `<button id="${place.name.replaceAll(" ","")}-button">🌎?</button> ${place.name} - ${place.period}`;
+        visitList.appendChild(listItem);
+    });
 
-        // Map setup
-        const locationsMap = L.map("map-all", {
-            worldCopyJump: false,  // Enable proper wrapping behavior
-            maxBoundsViscosity: 1.0  // Ensure smooth scrolling at edges
-          }).setView([25.0174, 151.5431], 2); // Initialize centered east of Taipei
+    // Map setup
+    const locationsMap = L.map("map-all", {
+      worldCopyJump: false,  // Enable proper wrapping behavior
+      maxBoundsViscosity: 1.0  // Ensure smooth scrolling at edges
+    }).setView([25.0174, 151.5431], 2); // Initialize centered east of Taipei
 
-        const tiles_all = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(locationsMap);
+    const tiles_all = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(locationsMap);
 
         
-        // Create green marker icon
-        const greenIcon = new L.Icon({
-            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
-            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-            iconSize: [25, 41],
-            iconAnchor: [12, 41],
-            popupAnchor: [1, -34],
-            shadowSize: [41, 41]
-        });
-        // Create yellow marker icon
-            const yellowIcon = new L.Icon({
-              iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-yellow.png',
-              shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-              iconSize: [25, 41],
-              iconAnchor: [12, 41],
-              popupAnchor: [1, -34],
-              shadowSize: [41, 41]
-            });
-        // Create red marker icon
-            const redIcon = new L.Icon({
-              iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
-              shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-              iconSize: [25, 41],
-              iconAnchor: [12, 41],
-              popupAnchor: [1, -34],
-              shadowSize: [41, 41]
-            });
-        // Create violet marker icon
-            const violetIcon = new L.Icon({
-              iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png',
-              shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-              iconSize: [25, 41],
-              iconAnchor: [12, 41],
-              popupAnchor: [1, -34],
-              shadowSize: [41, 41]
-            });
+    // Create green marker icon
+    const greenIcon = new L.Icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+    // Create yellow marker icon
+    const yellowIcon = new L.Icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-yellow.png',
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+    // Create red marker icon
+    const redIcon = new L.Icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+    // Create violet marker icon
+    const violetIcon = new L.Icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png',
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
 
 
           // Add markers for previous visits with proper wrapping
@@ -558,19 +558,25 @@
             });
           });
 
+        // show coordinates when clicking on map
+        const coord_popup = L.popup()
+            .setLatLng([0, 0])
+            .setContent('Location')
+    
+        const onMapClick = (map, popup, e) => {
+            popup
+                .setLatLng(e.latlng)
+                .setContent(`Location ${e.latlng.toString()}`)
+                .openOn(map);
+        }
+    
+        locationsMap.on('click', e => {
+          if (event.ctrlKey) {onMapClick(locationsMap, coord_popup, e)}
+        });
 
-        var long_term_markers = new L.MarkerClusterGroup();
 
-        long_term_markers.addLayer(
-            L.marker([42.3590, 288.9095])
-            .bindPopup(
-                `<b>Massachusetts Institute of Technology</b><br />
-                Building 2`
-            )
-        );
 
-        locationsMap.addLayer(long_term_markers)
-
+          // OLD MAP
 
         const map_short = L.map("map-short").setView([15.0, 150.0], 2);
         const tiles1 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -672,7 +678,7 @@
             .setLatLng([51.513, -0.09])
             .setContent('I am a standalone popup.')
     
-        function onMapClick(map, popup, e) {
+        function onMapClick2(map, popup, e) {
             popup
                 .setLatLng(e.latlng)
                 .setContent(`You clicked the map at ${e.latlng.toString()}`)
@@ -680,7 +686,7 @@
         }
     
         // locationsMap.on('click', e => onMapClick(locationsMap, popup1, e));
-        map_short.on('click', e => onMapClick(map_short, popup2, e));
+        map_short.on('click', e => onMapClick2(map_short, popup2, e));
     
     </script>
     
