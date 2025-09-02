@@ -27,6 +27,12 @@
       }
 
         /* Map styles */
+      #map-all {
+        height: 500px;
+        width: 118%; 
+        margin: 0 -9%;
+      }
+      
       .legend {
         padding: 6px 8px;
         font: 12px Arial, Helvetica, sans-serif;
@@ -56,7 +62,7 @@
     <h3>
       Places I have held positions or studied:
     </h3>
-    <div id="map-all" style="height:500px; width:118%; margin-left: -9%;"></div>
+    <div id="map-all"></div>
   </div>
   <br />
 
@@ -142,7 +148,8 @@
       { 
         lat: 44.9747, 
         lng: 266.7653, 
-        name: "University of Minnesota",
+        name: "Combinatorics and Algebra REU",
+        inst: "University of Minnesota",
         city: "Minneapolis, USA",
         period: "Summer 2012",
       },
@@ -382,11 +389,9 @@
           <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
             ${place.period}
           </div>
-          <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
-            ${place.inst}
-          </div>
-          <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
-            ${place.city}
+          <div style="margin-top: 6px;">
+            ${place.inst}, 
+            <abbr style="color: #666; font-size: 0.9em;">${place.city}</abbr>
           </div>
         </div>
       `;
@@ -573,11 +578,11 @@
 
           // OLD MAP
 
-        const map_short = L.map("map-short").setView([15.0, 150.0], 2);
-        const tiles1 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map_short);
+        // const map_short = L.map("map-short").setView([15.0, 150.0], 2);
+        // const tiles1 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        //     maxZoom: 19,
+        //     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        // }).addTo(map_short);
 
         var short_term_markers = new L.MarkerClusterGroup();
 
@@ -661,7 +666,7 @@
             )
         );
 
-        map_short.addLayer(short_term_markers);
+        // map_short.addLayer(short_term_markers);
         
         
         // show coordinates when clicking on map
@@ -681,7 +686,7 @@
         }
     
         // locationsMap.on('click', e => onMapClick(locationsMap, popup1, e));
-        map_short.on('click', e => onMapClick2(map_short, popup2, e));
+        // map_short.on('click', e => onMapClick2(map_short, popup2, e));
     
   </script>
     
