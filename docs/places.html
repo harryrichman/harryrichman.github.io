@@ -75,7 +75,9 @@
         <ul id="affiliation-list"></ul>
       </td>
       <td>
-        <h3>Visits:</h3>
+        <h3>Future Travel:</h3>
+        <ul id="future-visit-list"></ul>
+        <h3>Past Travel:</h3>
         <ul id="visit-list"></ul>
       </td>
     </tr>
@@ -324,8 +326,8 @@
     const affiliationList = document.getElementById("affiliation-list");
     currentAffiliation.concat(previousAffiliations.reverse()).forEach(place => {
         const listItem = document.createElement("li");
-        listItem.innerHTML = `<button id="${place.name.replaceAll(" ","")}-button">🌎?</button> ${place.name}<br />
-        &emsp;${place.period}`;
+        listItem.innerHTML = `<button id="${place.name.replaceAll(" ","")}-button">🌎</button> ${place.name}<br />
+        &emsp;&emsp;&emsp;&emsp;&emsp;${place.period}`;
         affiliationList.appendChild(listItem);
     });
 
@@ -333,8 +335,18 @@
     const visitList = document.getElementById("visit-list");
     previousVisits.reverse().forEach(place => {
         const listItem = document.createElement("li");
-        listItem.innerHTML = `<button id="${place.name.replaceAll(" ","")}-button">🌎?</button> ${place.name} - ${place.period}`;
+        listItem.innerHTML = `<button id="${place.name.replaceAll(" ","")}-button">🌎</button> ${place.name}<br />
+        &emsp;&emsp;&emsp;&emsp;&emsp;${place.period}`;
         visitList.appendChild(listItem);
+    });
+
+    // Populate list of future visits
+    const futureVisitList = document.getElementById("future-visit-list");
+    futureConferences.forEach(place => {
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `<button id="${place.name.replaceAll(" ","")}-button">🌎</button> ${place.name}<br />
+        &emsp;&emsp;&emsp;&emsp;&emsp;${place.period}`;
+        futureVisitList.appendChild(listItem);
     });
 
     // Map setup
