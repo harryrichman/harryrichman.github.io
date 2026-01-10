@@ -353,7 +353,7 @@
     const locationsMap = L.map("map-all", {
       worldCopyJump: false,  // Enable proper wrapping behavior
       maxBoundsViscosity: 1.0  // Ensure smooth scrolling at edges
-    }).setView([25.0174, 151.5431], 2); // Initialize centered east of Taipei
+    }).setView([25.0174, 151.5431], 2); // Initialize centered east of Taipei, zoom level = 2
 
     const tiles_all = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
@@ -508,6 +508,11 @@
       let mapMarker = marker.addTo(locationsMap);
       // Adjust color saturation to light violet
       mapMarker._icon.style.filter = "hue-rotate(25deg) saturate(20%) brightness(150%)";
+
+      // Show popup when map-button next to list name is clicked
+      document.getElementById(`${place.name.replaceAll(" ", "")}-button`).addEventListener("click", function () {
+          marker.openPopup();
+      });
     });
           
     // Add marker for current affiliations with proper wrapping
