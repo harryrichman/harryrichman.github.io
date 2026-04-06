@@ -235,7 +235,7 @@
         lng: 2.2086,
         name: "Omid Amini research visit",
         inst: "École Polytechnique",
-        city: "France",
+        city: "Palaiseau, France",
         period: "August 2022",
       },
       { //42.65923029287107, -78.40059496631612
@@ -299,24 +299,27 @@
         lng: 120.2171, 
         name: "Algebraic Geometry in East Asia",
         inst: "National Cheng Kung University",
-        period: "10 - 14 November 2025"
+        city: "Tainan, Taiwan",
+        period: "10 - 14 November 2025",
       },
       { //23.126280112808583, 121.21947139640608
         lat: 23.1263, 
         lng: 121.2195, 
         name: "Tour de Formosa",
         inst: "National Taiwan University",
-        period: "12 - 16 January 2026"
+        period: "12 - 16 January 2026",
+        city: "Hualien - Zuoying, Taiwan",
       },
-    ];
-    const futureConferences = [
       { //24.98751640850156, 121.57599217116473
         lat: 24.9875, 
         lng: 121.5760, 
         name: "Mathematical Phylogenetics",
         inst: "National Chengchi University",
-        period: "30 March - 2 April 2026"
+        period: "30 March - 2 April 2026",
+        city: "Taipei, Taiwan",
       },
+    ];
+    const futureConferences = [
       // { 
       //   lat: 19.9969, 
       //   lng: 204.2171, 
@@ -360,7 +363,8 @@
 
     const tiles_all = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      referrerPolicy: 'strict-origin-when-cross-origin',
     }).addTo(locationsMap);
 
         
@@ -619,18 +623,6 @@
     });
 
 
-
-          // OLD MAP
-
-        // const map_short = L.map("map-short").setView([15.0, 150.0], 2);
-        // const tiles1 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        //     maxZoom: 19,
-        //     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        // }).addTo(map_short);
-
-       
-        // map_short.addLayer(short_term_markers);
-        
        
   </script>
     
