@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Formalizing the matrix-tree theorem KMS</title>
+
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reset.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/white-contrast.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/plugin/highlight/monokai.css">
+
+		<!-- for lean syntax highlighting -->
+		<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/default.min.css">
+		<script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js"></script>
+		<script type="text/javascript" src="https://unpkg.com/highlightjs-lean/dist/lean.min.js"></script>
+		<script>
+			// Initialize highlighting for the page
+			hljs.highlightAll();
+		</script>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides" style="text-align: left;">
+				<section data-markdown>
+					<textarea data-template>
+						## Formalizing the matrix-tree theorem using Lean and Aristotle
+
+						&nbsp;
+
+						22 June 2026 
+
+						KMS 80th Anniversary International Conference  
+						<small>Session on Machine-Assisted Mathematics: Formalization and Automated Reasoning</small>
+
+						Harry Richman  (NCTS, Taipei)
+						
+					</textarea>
+				</section>
+
+				<!-- <section data-markdown>
+					<textarea data-template>
+						### Goals of my talk
+
+						- x
+
+					</textarea>
+				</section> -->
+
+				<section data-markdown>
+					<textarea data-template>
+						### Matrix-Tree Theorem
+
+						Setup:
+
+						- $G$ = finite graph
+
+						- $L_0$ = reduced Laplacian matrix
+
+						- *spanning tree*  = subgraph which is connected, acyclic, contains all vertices
+
+
+						**Theorem.** (Kirchhoff, 1860s) \\[ \det L_0 = \\# (\text{ spanning trees })\\]
+
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Matrix-Tree Theorem: Parts
+
+						Using:
+
+						- Factorization with incidence matrix $ L = B B^T$
+
+
+						**Theorem.** (Kirchhoff, 1860s) 
+						\\[ \det L_0 = \\# (\text{ spanning trees })\\]
+						\\[ \downarrow \\]
+						\\[ \det (B_0 B_0^T) = \\# (\text{ spanning trees })\\]
+
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Matrix-Tree Theorem: Parts
+
+						Using:
+
+						- Cauchy-Binet identity
+
+
+						**Theorem.** (Kirchhoff, 1860s) 
+						\\[ \det (B_0 B_0^T) = \\# (\text{ spanning trees })\\]
+						\\[ \downarrow \\]
+						\\[ \sum_{|I| = n-1} (\det B_0[\cdot, I])(\det B_0^T[I, \cdot]) = \\# (\text{ sp. trees })\\]
+
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Matrix-Tree Theorem: Parts
+
+						Using:
+
+						- Reduced incidence matrix minors are $\pm 1$ or $0$
+
+
+						**Theorem.** (Kirchhoff, 1860s) 
+						\\[ \sum_{|I| = n-1} (\det B_0[\cdot, I])^2 = \\# (\text{ spanning trees })\\]
+						\\[ \downarrow \\]
+						\\[ \\# ( I \\; : \\; \det B_0[\cdot, I] \neq 0 ) = \\# (\text{ spanning trees })\\]
+
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Matrix-Tree Theorem: Parts
+
+						&nbsp;
+
+						![Matrix-Tree Theorem parts](matrix_tree_thm_parts.jpg)
+
+
+
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Autoformalization with Aristotle
+
+						- Asked to formalize Matrix-Tree theorem
+						  - (March 2026) failed, but provided a theorem statement $~$
+						  <small>[<a href="https://aristotle.harmonic.fun/dashboard/requests/914d33c7-ad93-4d3b-8bff-f1af65e2023c" target="_blank">link</a>]</small>
+
+						- Asked to formalize one of the three "parts"
+						  - (March 2026) Cauchy-Binet succeeded
+						  <small>[<a href="https://aristotle.harmonic.fun/dashboard/requests/76b98520-efab-47d0-90e8-03dbbe8bdb66" target="_blank">link</a>, 131 lines]</small>
+						  - (June 2026) Incidence matrix factorization succeeded
+						  <small>[<a href="https://aristotle.harmonic.fun/dashboard/requests/ed9cb318-eb2d-4542-ba00-5ba26abc59a0" target="_blank">link</a>, 97 lines]</small>
+						  - (June 2026) Incidence matrix minors succeeded 
+						  <small>[<a href="https://aristotle.harmonic.fun/dashboard/requests/bebdf2ea-52ae-4036-adf8-b5617b6d9f6b" target="_blank">link pt. 1</a>, 159 lines]</small>
+						  <small>[<a href="https://aristotle.harmonic.fun/dashboard/requests/c4e9eec7-b7d2-45cb-83ba-4dc89fdcfa42" target="_blank">link pt. 2</a>, 393 lines]</small>
+
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Autoformalization with Aristotle
+
+						- Asked to formalize Matrix-Tree theorem
+						  - (March 2026) failed, but provided a theorem statement $~$
+						  <small>[<a href="https://aristotle.harmonic.fun/dashboard/requests/914d33c7-ad93-4d3b-8bff-f1af65e2023c">link</a>]</small>
+
+						![](aristotle_mtt_out_1.png)
+						$$\vdots$$
+						![](aristotle_mtt_out_2.png)
+
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Autoformalization with Aristotle
+
+						- Asked to formalize Matrix-Tree theorem
+						  - (March 2026) failed, but provided a theorem statement $~$
+						  <small>[<a href="https://aristotle.harmonic.fun/dashboard/requests/914d33c7-ad93-4d3b-8bff-f1af65e2023c" target="_blank">link</a>]</small>
+
+						$$\vdots$$
+						![](aristotle_mtt_out_2.png)
+
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Cauchy-Binet Identity
+
+						Setup:
+
+						- $A$ = $m \times n$ matrix
+
+						- $B$ = $n \times n$ matrix
+
+						- submatrix notation: $A[\cdot, I]$
+
+						**Theorem.** \\[ \det (AB) = \sum_{|I| = m} (\det A[\cdot, I]) (\det B[I, \cdot])\\]
+
+					</textarea>
+				</section>
+
+				<!-- <section data-markdown>
+					<textarea data-template>
+						### Cauchy-Binet in Lean
+
+						**Theorem.** \\[ \det (AB) = \sum_{|I| = m} (\det A[\cdot, I]) (\det B[I, \cdot])\\]
+		
+
+					</textarea>
+				</section> -->
+
+				<section>
+					<h3>Cauchy-Binet in Lean</h3>
+
+					<div>
+					<strong>Theorem.</strong>
+					${\det (AB) = \sum_{|I| = m} (\det A[\cdot, I]) (\det B[I, \cdot])}$
+					</div>
+
+<!-- Your Lean code blocks -->
+<pre><code class="language-lean">variable {R : Type*} [CommRing R]
+variable {M N : Type} [Fintype M] [Fintype N] [DecidableEq M] [DecidableEq N]
+  [LinearOrder M] [LinearOrder N]
+
+/-- Cauchy-Binet, https://en.wikipedia.org/wiki/Cauchy%E2%80%93Binet_formula -/
+theorem Matrix.det_mul' (A : Matrix M N R) (B : Matrix N M R) :
+    det (A * B) = ∑ f : M ↪o N, 
+	  det (A.submatrix id f) * det (B.submatrix f id) := by
+	...</code></pre>
+
+				</section>
+
+				<section>
+					<h3>Cauchy-Binet in Lean</h3>
+					<div>
+							Many choices for "spelling" formalization
+					</div>
+
+<!-- Your Lean code blocks -->
+<pre><code class="language-lean">variable [Fintype M] ... [LinearOrder M] [LinearOrder N]
+
+theorem Matrix.det_mul' (A : Matrix M N R) (B : Matrix N M R) :
+    det (A * B) = ∑ f : M ↪o N, 
+	  det (A.submatrix id f) * det (B.submatrix f id) := by
+	...</code></pre>
+
+					<ul>
+						<li>
+							From Meta's autoformalizing textbooks project
+						</li>
+					</ul>
+<pre><code class="language-lean">theorem cauchyBinet {n m : ℕ} 
+	(A : Matrix (Fin n) (Fin m) R) (B : Matrix (Fin m) (Fin n) R) :
+    (A * B).det = ∑ S ∈ (Finset.univ : Finset (Fin m)).powersetCard n,
+	if h : S.card = n then
+	(colsSubmatrix A S h).det * (rowsSubmatrix B S h).det
+	else 0 := by
+	...</code></pre>
+
+				</section>
+
+				<section>
+					<h3>Cauchy-Binet in Lean</h3>
+					<div>
+							Many choices for "spelling" formalization
+					</div>
+
+<!-- Your Lean code blocks -->
+<pre><code class="language-lean">theorem Matrix.det_mul' (A : Matrix M N R) (B : Matrix N M R) :
+    det (A * B) = ∑ f : M ↪o N, 
+	  det (A.submatrix id f) * det (B.submatrix f id) := by
+	...</code></pre>
+
+					<ul>
+						<li>
+							From Ho Boon Suan <a href="https://github.com/boonsuan/FerrersBound/tree/main" target="_blank">project</a>
+						</li>
+					</ul>
+<pre><code class="language-lean">/-! We prove the Cauchy–Binet formula in the "function form":
+`det(A * B) = ∑ f : m → n, (∏ i, A i (f i)) * det(B.submatrix f id)`
+and then restrict to injective functions.
+... -/
+
+theorem Matrix.det_mul_sum (A : Matrix m n R) (B : Matrix n m R) :
+    (A * B).det = ∑ f : m → n, 
+	  (∏ i, A i (f i)) * (B.submatrix f id).det := by
+	...</code></pre>
+
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Friction using Aristotle
+
+						- Some lemmas are repeats of Mathlib
+
+						![](aristotle_redundant_lem.png)
+
+						... but in Mathlib docs:
+
+						![](lean_docs_lem.png)
+
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Friction using Aristotle
+
+
+						![](aristotle_redundant_lem.png)
+
+						... but in Mathlib docs:
+
+						![](lean_docs_lem.png)
+
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Friction using Lean
+
+						- Dummy variables overwritten in sum manipulation
+
+						![](dummy_var_problem.png)
+
+						<small>[<a href="https://live.lean-lang.org/#code=import%20Mathlib%0A%0Avariable%20%7BM%20N%20%3A%20Type%7D%20%5BFintype%20M%5D%20%5BFintype%20N%5D%20%5BDecidableEq%20M%5D%20%5BDecidableEq%20N%5D%20%5BLinearOrder%20M%5D%20%5BLinearOrder%20N%5D%0A%0Atheorem%20Matrix.det_mul%27%20%28A%20%3A%20Matrix%20M%20N%20%E2%84%A4%29%20%28B%20%3A%20Matrix%20N%20M%20%E2%84%A4%29%20%3A%0A%20%20det%20%28A%20*%20B%29%20%3D%20%E2%88%91%20f%20%3A%20M%20%E2%86%AAo%20N%2C%20det%20%28A.submatrix%20id%20f%29%20*%20det%20%28B.submatrix%20f%20id%29%20%3A%3D%20by%0A%20%20--%20expand%20determinant%20in%20matrix%20entries%20as%20sum%20over%20permutations%2C%20on%20LHS%0A%20%20rw%20%5BMatrix.det_apply%20%28A%20*%20B%29%5D%20--%20uses%20%CF%83%20for%20summing%20permutations%0A%20%20--%20expand%20entries%20of%20matrix%20product%20A*B%0A%20%20simp_rw%20%5BMatrix.mul_apply%5D%20--%20uses%20x%20for%20summing%20permutations%20%3A%28%0A%0A%20%20sorry%0A" target="_blank">Lean playground</a>]</small>
+
+						- Zulip discussion [<a href="https://leanprover.zulipchat.com/#narrow/channel/113489-new-members/topic/Choosing.20dummy.20variable.20inside.20summation" target="_blank">link</a>]
+
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Friction using Lean
+
+						- Dummy variables overwritten in sum manipulation
+
+						![](lean_summation_before.png)
+
+						<small>[<a href="https://live.lean-lang.org/#code=import%20Mathlib%0A%0Avariable%20%7BM%20N%20%3A%20Type%7D%20%5BFintype%20M%5D%20%5BFintype%20N%5D%20%5BDecidableEq%20M%5D%20%5BDecidableEq%20N%5D%20%5BLinearOrder%20M%5D%20%5BLinearOrder%20N%5D%0A%0Atheorem%20Matrix.det_mul%27%20%28A%20%3A%20Matrix%20M%20N%20%E2%84%A4%29%20%28B%20%3A%20Matrix%20N%20M%20%E2%84%A4%29%20%3A%0A%20%20det%20%28A%20*%20B%29%20%3D%20%E2%88%91%20f%20%3A%20M%20%E2%86%AAo%20N%2C%20det%20%28A.submatrix%20id%20f%29%20*%20det%20%28B.submatrix%20f%20id%29%20%3A%3D%20by%0A%20%20--%20expand%20determinant%20in%20matrix%20entries%20as%20sum%20over%20permutations%2C%20on%20LHS%0A%20%20rw%20%5BMatrix.det_apply%20%28A%20*%20B%29%5D%20--%20uses%20%CF%83%20for%20summing%20permutations%0A%20%20--%20expand%20entries%20of%20matrix%20product%20A*B%0A%20%20simp_rw%20%5BMatrix.mul_apply%5D%20--%20uses%20x%20for%20summing%20permutations%20%3A%28%0A%0A%20%20sorry%0A" target="_blank">Lean playground</a>]</small>
+
+						- Zulip discussion [<a href="https://leanprover.zulipchat.com/#narrow/channel/113489-new-members/topic/Choosing.20dummy.20variable.20inside.20summation" target="_blank">link</a>]
+
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Friction using Lean
+
+						- Dummy variables overwritten in sum manipulation
+
+						![](lean_summation_after.png)
+
+						<small>[<a href="https://live.lean-lang.org/#code=import%20Mathlib%0A%0Avariable%20%7BM%20N%20%3A%20Type%7D%20%5BFintype%20M%5D%20%5BFintype%20N%5D%20%5BDecidableEq%20M%5D%20%5BDecidableEq%20N%5D%20%5BLinearOrder%20M%5D%20%5BLinearOrder%20N%5D%0A%0Atheorem%20Matrix.det_mul%27%20%28A%20%3A%20Matrix%20M%20N%20%E2%84%A4%29%20%28B%20%3A%20Matrix%20N%20M%20%E2%84%A4%29%20%3A%0A%20%20det%20%28A%20*%20B%29%20%3D%20%E2%88%91%20f%20%3A%20M%20%E2%86%AAo%20N%2C%20det%20%28A.submatrix%20id%20f%29%20*%20det%20%28B.submatrix%20f%20id%29%20%3A%3D%20by%0A%20%20--%20expand%20determinant%20in%20matrix%20entries%20as%20sum%20over%20permutations%2C%20on%20LHS%0A%20%20rw%20%5BMatrix.det_apply%20%28A%20*%20B%29%5D%20--%20uses%20%CF%83%20for%20summing%20permutations%0A%20%20--%20expand%20entries%20of%20matrix%20product%20A*B%0A%20%20simp_rw%20%5BMatrix.mul_apply%5D%20--%20uses%20x%20for%20summing%20permutations%20%3A%28%0A%0A%20%20sorry%0A" target="_blank">Lean playground</a>]</small>
+
+						- Zulip discussion [<a href="https://leanprover.zulipchat.com/#narrow/channel/113489-new-members/topic/Choosing.20dummy.20variable.20inside.20summation" target="_blank">link</a>]
+
+					</textarea>
+				</section>
+
+				<section>
+					<h2>Cauchy-Binet: small case</h2>
+
+					<ul>
+						<li>
+							Start with $2 \times 3$ matrices
+						</li>
+					</ul>
+					<!-- Your Lean code blocks -->
+					<pre><code class="language-lean">variable {R : Type*} [CommRing R]
+lemma det_mul_2_by_3 (A : Matrix (Fin 2) (Fin 3) R) 
+    	(B : Matrix (Fin 3) (Fin 2) R) :
+		det (A * B) = ∑ f : (Fin 2) ↪o (Fin 3), 
+		det (A.submatrix id f) * det (B.submatrix f id) := by
+	...</code></pre>
+
+				</section>
+
+				<section>
+					<h2>Cauchy-Binet: small case</h2>
+					<!-- Your Lean code blocks -->
+					<pre><code class="language-lean">import Mathlib
+
+open Matrix
+
+lemma injec_2_3 : (Finset.univ : Finset ( Fin 2 ↪o Fin 3 )) = 
+	{ 
+		OrderEmbedding.ofStrictMono ( ![0,1] ) ( by decide ), 
+		OrderEmbedding.ofStrictMono ( ![0,2] ) ( by decide ), 
+		OrderEmbedding.ofStrictMono ( ![1,2] ) ( by decide ) 
+	} := by
+	ext f
+	simp [Finset.mem_univ]
+	rcases f with ⟨ f, hf ⟩
+	rcases f with ⟨ f, hf ⟩
+	fin_cases f <;> simp +decide at hf ⊢
+	· left
+		ext i
+		fin_cases i <;> rfl
+	· right; left
+		ext i
+		fin_cases i <;> rfl;
+	· right; right
+		ext i
+		fin_cases i <;> rfl;
+	
+	
+
+variable {R : Type*} [CommRing R]
+lemma det_mul_2_by_3 (A : Matrix (Fin 2) (Fin 3) R) 
+    	(B : Matrix (Fin 3) (Fin 2) R) :
+		det (A * B) = ∑ f : (Fin 2) ↪o (Fin 3), 
+		det (A.submatrix id f) * det (B.submatrix f id) := by
+	simp +decide [ Matrix.det_fin_two]
+	simp +decide [ Matrix.mul_apply, Fin.sum_univ_three ]
+	rw [ injec_2_3 ]
+	simp +decide ; 
+	ring!;</code></pre>
+
+					<div>
+						<small>
+						[<a href="https://live.lean-lang.org/#codez=JYWwDg9gTgLgBAWQIYwBYBtgCMBQOJgCmAdoilMAB57qEghJzDEBWhAxgPoBMnAzHABccABQAxZgGdCMAHQBXYsABuQuBOLT4I9czjc4gKsIIu0gICU5uAF44OOA7gBvO48cB5KABNCUAKIgWIReXswA5rIQAGYAyjAU7DAIEMQmOgCEANoADAA0AIwAunBWOlgAnnA%2B7MA%2BJbmubnCePv6BwaHEEdFxCUkpaXBZedzFpXAVVRy1hPWNbi2%2BAUEh4ZGx8cCJyamiQ5n5uaMle5PVMyf2jgC%2BQrYVV4SU8FFXkqBgcJkaWrIgdJxFCpClcoOwkNJJHAonAAO7ANBwQAX5NCGqgYYBL8lB4Mh0LhCNQyNRcHRcCxDiizE4OMIUJhAB4ANwAPjg73AcAA1Oc6igSTDAEVEVwA7XBaFEYFcHE94MApdCqTSocA4EzWVAougRXAKGFUDBGWLCBL5TKmPLKcRqRDaUxVSydZrGdrdfrDa7JW4zXK3JbrbiVWrHehnW55XhlEgKEgsLRnAAlNQAFXKRAAVLdMgBhCD0ePhODxkG0eiMHwwTggeToHicCr8UQAQTUyE2lFEGn0pU7fCs8dKACEW%2BQqB29L2x6RuH2rIIruWm3A03AB1ZbIBEIjxwnEemnRjSPfMDQXIkbskk8iwDDbTC80Ksy5PA%2FPl%2BvFHbMNqs%2Fu5TeHy5PKzJkZBtrI5acH6MCwhAIIOOynzctMdTAa275%2FNWnBIGAYDoOUDQaC%2BICAkoyicGgUCELMsE6rCXxMKwHC1gI1HwQBSGzIaoLhOkzpAA" target="_blank">Lean playground</a>]						
+						</small>
+					</div>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Cauchy-Binet: small case
+
+						- Lean infoview can be obscure
+
+						![](lean_lemma_infoview.png)
+
+						<small>
+						[<a href="https://live.lean-lang.org/#codez=JYWwDg9gTgLgBAWQIYwBYBtgCMBQOJgCmAdoilMAB57qEghJzDEBWhAxgPoBMnAzHABccABQAxZgGdCMAHQBXYsABuQuBOLT4I9czjc4gKsIIu0gICU5uAF44OOA7gBvO48cB5KABNCUAKIgWIReXswA5rIQAGYAyjAU7DAIEMQmOgCEANoADAA0AIwAunBWOlgAnnA%2B7MA%2BJbmubnCePv6BwaHEEdFxCUkpaXBZedzFpXAVVRy1hPWNbi2%2BAUEh4ZGx8cCJyamiQ5n5uaMle5PVMyf2jgC%2BQrYVV4SU8FFXkqBgcJkaWrIgdJxFCpClcoOwkNJJHAonAAO7ANBwQAX5NCGqgYYBL8lB4Mh0LhCNQyNRcHRcCxDiizE4OMIUJhAB4ANwAPjg73AcAA1Oc6igSTDAEVEVwA7XBaFEYFcHE94MApdCqTSocA4EzWVAougRXAKGFUDBGWLCBL5TKmPLKcRqRDaUxVSydZrGdrdfrDa7JW4zXK3JbrbiVWrHehnW55XhlEgKEgsLRnAAlNQAFXKRAAVLdMgBhCD0ePhODxkG0eiMHwwTggeToHicCr8UQAQTUyE2lFEGn0pU7fCs8dKACEW%2BQqB29L2x6RuH2rIIruWm3A03AB1ZbIBEIjxwnEemnRjSPfMDQXIkbskk8iwDDbTC80Ksy5PA%2FPl%2BvFHbMNqs%2Fu5TeHy5PKzJkZBtrI5acH6MCwhAIIOOynzctMdTAa275%2FNWnBIGAYDoOUDQaC%2BICAkoyicGgUCELMsE6rCXxMKwHC1gI1HwQBSGzIaoLhOkzpAA" target="_blank">Lean playground</a>]						
+						</small>
+
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						### Cauchy-Binet: small case
+
+						- Lean infoview can be obscure
+
+						![](lean_lemma_infoview_obscure.png)
+
+						<small>
+						[<a href="https://live.lean-lang.org/#codez=JYWwDg9gTgLgBAWQIYwBYBtgCMBQOJgCmAdoilMAB57qEghJzDEBWhAxgPoBMnAzHABccABQAxZgGdCMAHQBXYsABuQuBOLT4I9czjc4gKsIIu0gICU5uAF44OOA7gBvO48cB5KABNCUAKIgWIReXswA5rIQAGYAyjAU7DAIEMQmOgCEANoADAA0AIwAunBWOlgAnnA%2B7MA%2BJbmubnCePv6BwaHEEdFxCUkpaXBZedzFpXAVVRy1hPWNbi2%2BAUEh4ZGx8cCJyamiQ5n5uaMle5PVMyf2jgC%2BQrYVV4SU8FFXkqBgcJkaWrIgdJxFCpClcoOwkNJJHAonAAO7ANBwQAX5NCGqgYYBL8lB4Mh0LhCNQyNRcHRcCxDiizE4OMIUJhAB4ANwAPjg73AcAA1Oc6igSTDAEVEVwA7XBaFEYFcHE94MApdCqTSocA4EzWVAougRXAKGFUDBGWLCBL5TKmPLKcRqRDaUxVSydZrGdrdfrDa7JW4zXK3JbrbiVWrHehnW55XhlEgKEgsLRnAAlNQAFXKRAAVLdMgBhCD0ePhODxkG0eiMHwwTggeToHicCr8UQAQTUyE2lFEGn0pU7fCs8dKACEW%2BQqB29L2x6RuH2rIIruWm3A03AB1ZbIBEIjxwnEemnRjSPfMDQXIkbskk8iwDDbTC80Ksy5PA%2FPl%2BvFHbMNqs%2Fu5TeHy5PKzJkZBtrI5acH6MCwhAIIOOynzctMdTAa275%2FNWnBIGAYDoOUDQaC%2BICAkoyicGgUCELMsE6rCXxMKwHC1gI1HwQBSGzIaoLhOkzpAA" target="_blank">Lean playground</a>]						
+						</small>
+
+					</textarea>
+				</section>
+
+				<!-- <section data-markdown>
+					<textarea data-template>
+						## Example proof in Lean
+
+						```lean
+						import Mathlib
+
+						open Matrix
+
+						lemma injec_2_3 : (Finset.univ : Finset ( Fin 2 ↪o Fin 3 )) = 
+							{ 
+							OrderEmbedding.ofStrictMono ( ![0,1] ) ( by decide ), 
+							OrderEmbedding.ofStrictMono ( ![0,2] ) ( by decide ), 
+							OrderEmbedding.ofStrictMono ( ![1,2] ) ( by decide ) 
+							} := by
+						ext f
+						simp [Finset.mem_univ]
+						rcases f with ⟨ f, hf ⟩
+						rcases f with ⟨ f, hf ⟩
+						fin_cases f <;> simp +decide at hf ⊢
+						· left
+							ext i
+							fin_cases i <;> rfl
+						· right; left
+							ext i
+							fin_cases i <;> rfl;
+						· right; right
+							ext i
+							fin_cases i <;> rfl;
+							
+						variable {R : Type*} [CommRing R]
+						lemma det_mul_2_by_3 (A : Matrix (Fin 2) (Fin 3) R) (B : Matrix (Fin 3) (Fin 2) R) :
+						det (A * B) = ∑ f : (Fin 2) ↪o (Fin 3), det (A.submatrix id f) * det (B.submatrix f id) := by
+						simp +decide [ Matrix.det_fin_two]
+						simp +decide [ Matrix.mul_apply, Fin.sum_univ_three ]
+						rw [ injec_2_3 ]
+						simp +decide ; 
+						ring!;
+						```
+
+					</textarea>
+				</section> -->
+
+				<section data-markdown>
+					<textarea data-template>
+						## Formalizing the matrix-tree theorem using Lean and Aristotle
+						
+<pre><code class="language-lean">variable {R : Type*} [CommRing R]
+lemma det_mul_2_by_3 (A : Matrix (Fin 2) (Fin 3) R) 
+    	(B : Matrix (Fin 3) (Fin 2) R) :
+		det (A * B) = ∑ f : (Fin 2) ↪o (Fin 3), 
+		det (A.submatrix id f) * det (B.submatrix f id) := by
+	...</code></pre>
+						&nbsp;
+
+						Thank you for listening!
+						
+					</textarea>
+				</section>
+
+
+				<!-- END OF TALK SLIDES -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<!-- <section>
+					<h2>Example code</h2>
+<pre>
+<code class="language-lean">import Mathlib.Data.Nat.Basic
+
+def hello : String := "Hello, Lean!"
+
+theorem add_comm (n m : ℕ) : n + m = m + n := by
+	induction n with
+	| zero => simp
+	| succ n ih => simp [ih]
+</code></pre>
+				</section> -->
+
+
+				
+				<!-- end of slides -->
+			</div>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/math/math.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js"></script>
+		<!-- <script src="plugin/highlight/highlight.js"></script> -->
+		
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealNotes, RevealMath.KaTeX ] // RevealHighlight, 
+			});
+		</script>
+
+
+
+	</body>
+</html>
