@@ -33,15 +33,15 @@
 
     <!-- Tab links -->
     <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'About')" id="defaultOpen">About</button>
-        <button class="tablinks" onclick="openTab(event, 'Research')">Research</button>
-        <button class="tablinks" onclick="openTab(event, 'Teaching')">Teaching</button>
-        <button class="tablinks" onclick="openTab(event, 'Notes')">Notes and Slides</button>
+        <button class="tablinks" data-tab="About" onclick="openTab(event, 'About')">About</button>
+        <button class="tablinks" data-tab="Research" onclick="openTab(event, 'Research')">Research</button>
+        <button class="tablinks" data-tab="Teaching" onclick="openTab(event, 'Teaching')">Teaching</button>
+        <button class="tablinks" data-tab="Notes" onclick="openTab(event, 'Notes')">Notes and Slides</button>
         <!-- 
-        <button class="tablinks" onclick="openTab(event, 'CV')">CV</button>
-        <button class="tablinks" onclick="openTab(event, 'Contact details')">Contact details</button> -->
-        <button class="tablinks" onclick="openTab(event, 'Places')">Travel</button>
-        <button class="tablinks" onclick="openTab(event, 'Misc')">Miscellaneous</button>
+        <button class="tablinks" data-tab="CV" onclick="openTab(event, 'CV')">CV</button>
+        <button class="tablinks" data-tab="Contact details" onclick="openTab(event, 'Contact details')">Contact details</button> -->
+        <button class="tablinks" data-tab="Places" onclick="openTab(event, 'Places')">Travel</button>
+        <button class="tablinks" data-tab="Misc" onclick="openTab(event, 'Misc')">Miscellaneous</button>
     </div>
 
     <!-- Tab content -->
@@ -804,23 +804,67 @@
 
     <script>
 
+        // Maps a URL hash to a tab pane id, so the visible tab label works as a
+        // link target (#travel -> Places) alongside the pane id itself.
+        var TAB_ALIASES = {
+            "travel": "Places",
+            "notes-and-slides": "Notes",
+            "miscellaneous": "Misc"
+        };
 
-        // Modified openTab function to handle map initialization
-        function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
+        var DEFAULT_TAB = "About";
+
+        function tabIdFromHash(hash) {
+            var name = decodeURIComponent(String(hash).replace(/^#/, "")).toLowerCase();
+            if (!name) { return null; }
+            if (TAB_ALIASES.hasOwnProperty(name)) { return TAB_ALIASES[name]; }
+            var panes = document.getElementsByClassName("tabcontent");
+            for (var i = 0; i < panes.length; i++) {
+                if (panes[i].id.toLowerCase() === name) { return panes[i].id; }
             }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
+            return null;
         }
 
-        // Initialize default tab
-        document.getElementById("defaultOpen").click();
+        // Shows a pane and highlights its button. Does not touch the URL.
+        function showTab(tabId) {
+            var panes = document.getElementsByClassName("tabcontent");
+            var links = document.getElementsByClassName("tablinks");
+            var pane = document.getElementById(tabId);
+            var i;
+
+            if (!pane) { return; }
+
+            for (i = 0; i < panes.length; i++) {
+                panes[i].style.display = "none";
+            }
+            for (i = 0; i < links.length; i++) {
+                links[i].className = links[i].className.replace(" active", "");
+            }
+
+            pane.style.display = "block";
+            for (i = 0; i < links.length; i++) {
+                if (links[i].getAttribute("data-tab") === tabId) {
+                    links[i].className += " active";
+                }
+            }
+        }
+
+        // Called from each button's onclick. The hash is written lowercase and via
+        // pushState so the browser does not treat it as an anchor and scroll the
+        // page down to the matching element id.
+        function openTab(evt, tabId) {
+            showTab(tabId);
+            var hash = "#" + tabId.toLowerCase();
+            if (window.history && window.history.pushState) {
+                window.history.pushState(null, "", hash);
+            }
+        }
+
+        function syncFromHash() {
+            showTab(tabIdFromHash(window.location.hash) || DEFAULT_TAB);
+        }
+
+        window.addEventListener("popstate", syncFromHash);
+        syncFromHash();
     </script>
 </body>
