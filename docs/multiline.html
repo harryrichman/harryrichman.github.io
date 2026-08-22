@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Minimal MathJax Page</title>
+    <title>Multiline Formulas</title>
     <script>
     MathJax = {
         section: 1,
@@ -9,7 +9,7 @@
             inlineMath: {'[+]': [['$', '$']]},
             tags: 'ams',
             tagSide: 'left',
-            packages: {'[+]': ['tagformat', 'sections']},
+            packages: {'[+]': ['tagformat', 'sections', 'mathtools']},
             tagformat: {
                 number: (n) => MathJax.config.section + '.' + n, // Format: section.equation
                 id: (tag) => 'eqn-id:' + tag,
@@ -26,7 +26,7 @@
                 }
             }],
         },
-        loader: {load: ['[tex]/tagformat']},
+        loader: {load: ['[tex]/tagformat', '[tex]/mathtools']},
         startup: {
             ready() {
             const Configuration = MathJax._.input.tex.Configuration.Configuration;
@@ -68,10 +68,44 @@
             text-align: center;
         }
 
+        .link-style {
+            font-family: monospace;
+        }
+
         code {
             background-color: rgba(220, 220, 220, 0.5);
             padding: 0 2px;
         }
+/* Style the outer box */
+details {
+  border: 1px solid #d3d3d3; /* Light gray border */
+  border-radius: 6px;        /* Rounded corners */
+  padding: 10px;             /* Spacing inside the box */
+  background-color: #fafafa; /* Optional: very subtle gray background */
+  margin-bottom: 15px;       /* Spacing below the block */
+}
+
+/* Style the clickable text */
+summary {
+    color: gray;
+    font-size: 8pt;
+  cursor: pointer;           /* Changes the mouse to a hand icon on hover */
+  /* font-weight: bold;         Makes the title stand out */
+  /* padding: 5px 0;            Adds a little breathing room around the text */
+}
+
+/* Optional: Style the code block inside to look distinct */
+details pre {
+  background-color: rgba(220, 220, 220, 0.5);
+  /* color: #abb2bf; */
+  padding: 0 10px;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 10px 0 0 0;          /* Separates the code from the summary text */
+}        
+details code {
+    background-color: rgba(0,0,0,0);
+}
     </style>
 
 </head>
@@ -89,13 +123,13 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td class="link-style">
                     <a href="mailto:publ@impan.pl">publ@impan.pl</a>
 
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td class="link-style">
                     <a href="https://www.impan.pl/en/publishing-house/for-authors">https://www.impan.pl/en/publishing-house/for-authors</a>
 
                     </td>
@@ -125,6 +159,7 @@
                 <em>A piece of advice</em>: forget <code>eqnarray</code>!
             </li>
         </ul>
+
         <h3>
             1. One multiline formula
         </h3>
@@ -148,6 +183,14 @@
                   \leq dddddddddddddddddddddddddddddddddddddd.
                 \end{multline}
                 \]
+<details>
+  <summary>show / hide latex source</summary>
+  <pre><code> 
+function sayHello() {
+  console.log("Hello, World!");
+}
+  </code></pre>
+</details>
                 The first line is set (almost) flush left, the last line is (almost) flush right, and the middle lines (if any) are centred.
             </li>
             <li>
@@ -175,7 +218,7 @@
     \]
             </li>
             <li>
-                To code an "object" consisting of centered lines within a formula, use <code>gathered</code>:
+                To code an "object" consisting of centred lines within a formula, use <code>gathered</code>:
                 \[
                 \begin{equation}\label{E:pasc}
                 \mathrm{Pascal}_{4} =
@@ -255,6 +298,47 @@
                 \end{equation*}
                 \]
             </li>
+
+            <li>
+                To move a line within an aligned structure to the left or to the right, use <code>MoveEqLeft</code> with a positive or negative parameter
+                (this requires <code>\usepackage{mathtools}</code>):
+                \[
+                \begin{equation}\label{E:shove1}
+                \begin{aligned}[t]
+                    xxxxx &=  yyyyyyyyyyyyyy + [eeee    \\
+                    \MoveEqLeft \hspace{12em} \times zzzzzzzzzzzzzzzzzz] \\          
+                    &= tttttttttttttttttt  \\
+                    &= vvvvvvvvvvv.         
+                \end{aligned}
+                \end{equation}
+                \]
+            </li>
+
+            <li>
+            If the formulas are left-numbered, you can also label a longer statement as a "formula", by treating it as an item of an itemized list (this requires <code>\usepackage{enumitem}</code>; the "leftmargin" parameter has to be adjusted according to the width of the formula number):
+            
+            <dl>
+
+            <!-- \begin{enumerate}[label=(\theequation), ref=\theequation, leftmargin=2.5em] -->
+            <dt>$\begin{equation}\end{equation}$ 
+</dt>
+            <dd>
+            Here you can place any statement, even taking several lines of text and including displayed formulas, like
+            \[
+            aaaa=bbb.
+            \]
+            </dd>
+
+            <dt>
+                $\begin{equation}\end{equation}$ 
+            </dt>
+            <dd>
+                Next item.
+            </dd>
+            
+            </dl>
+            </li>
+
         </ul>
     </div>
 
@@ -280,11 +364,214 @@ Note the spacing between parts of a formula on the same line; you can use
  <code>\quad</code> (small space), <code>\quad\ </code> (medium space)
 or <code>\qquad</code> (large space). 
             </li>
+            <li>
+If a formula number is unnecessary, you can "switch it off", using <code>\notag</code>:
+\[
+\begin{gather}
+aaaaaaaaaa=b,  \quad\    cc = xxx,   \quad\    dd = yyy, \notag\\
+mmmmmmmmmmmmm=0   \quad\   \text{for all }i=1,\ldots,n. \label{E:g3}
+\end{gather}
+\]
+(A formula number not cited in text is "information noise"; also, the number takes some space and often causes the formula to occupy one line more. As a rule, number only those formulas that are referred to later.)
+            </li>
+
+            <li>
+If no number is necessary, use <code>gather*</code>:
+\[
+\begin{gather*}
+aaaaaaaaaa=b,  \quad\    cc = xxx,   \quad\    dd = yyy,\\
+mmmmmmmmmmmmm=0   \quad\   \text{for all }i=1,\ldots,n.
+\end{gather*}
+\]
+            </li>
+
+            <li>
+If you need one centred number (for a group of equations), 
+instead of <code>gather</code> use  <code>gathered</code> inside <code>equation</code>: 
+\[
+\begin{equation} \label{E:g4}
+\begin{gathered}
+aaaaaaaaaa=b,  \quad\    cc = xxx,   \quad\    dd = yyy,\\
+mmmmmmmmmmmmm=0   \quad\   \text{for all }i=1,\ldots,n.
+\end{gathered}
+\end{equation}
+\]
+            </li>
+
+            <li>
+You can also "gather" several "multlines", using the subsidiary construct <code>multlined</code>, available in <code>mathtools</code>, with optional parameters indicating the placement of formula numbers and the width of the formulas:
+\[
+\begin{gather}
+\begin{multlined}[t][10cm] 
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\
++bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\\
+\shoveright{\times yyyyyyyyyyy}\\
+=xxxxxxxxxxxxxxxxxxxxxxxxxxxx, \notag
+\end{multlined}\label{E:m4}\\
+\begin{multlined}[t][10cm] 
+cccccccccccccccccccccccccccccccccccccccc\\
+=ddddddddddddddddddddddddddddddddddddddddd. \notag
+\end{multlined}\label{E:m5}
+\end{gather}
+\]
+            </li>
+
+            <li>
+In most cases, however, we want to align something, and then we use <code>align</code>:
+\[
+\begin{align}
+xxxxx &= yyyyyyyyyyyyyy      \label{E:a1}\\
+      &\quad + zzzzzzzzzzzzzzzzzz,  \notag\\
+  bbb &= tttttttttttttttttt,  \label{E:a2}\\
+  hh  &= vvvvvvvvvvv.         \label{E:a3}
+\end{align}
+\]
+Note that the alignment symbols, called ampersands (<code>&</code>), should be placed
+<strong>to the left</strong> of binary relation signs; if, as above, part of an expression is continued on the next line, put <code>&\quad</code> before the binary operation sign.
+<br /><br />
+
+Remember that you cannot place <code>&</code> signs anywhere:
+the parts between two <code>&</code> signs and between <code>&</code> and <code>\\</code> should be "separate formulas" (in the $\TeX$ sense), so you cannot e.g. put a <code>&</code> inside <code>{ }</code> or inside <code>\left - \right</code>.
+            </li>
+
+            <li>
+If you need one centred number for a group of aligned equations, use <code>split</code> or <code>aligned</code> inside <code>equation</code>:
+\[
+\begin{equation}\label{E:a4}
+\begin{split}
+xxxxx &= yyyyyyyyyyyyyy\\
+      &\quad + zzzzzzzzzzzzzzzzzz,\\
+  bbb &= tttttttttttttttttt,\\
+  hh  &= vvvvvvvvvvv.
+\end{split}
+\end{equation}
+\]
+            </li>
+
+            <li>
+If you have two "split" sets of equations and you want them to have a common alignment, you have to use two  <code>split</code>'s inside <code>align</code> (this is the advantage of <code>split</code> over <code>aligned</code>):
+\[
+\begin{align}
+\begin{split}
+ aaaaaaaaaaaaaaaaaaaaaaa &= bbbbbbbbbbbbb,\\
+ bbbb &= xxxxxx,
+\end{split}\label{Ea5}\\
+\begin{split}
+ ccccc &= yyyyyyy, \phantom{bbbbl}\\
+ dddddddd &= zzzzz.\label{E:a6}
+\end{split}
+\end{align}
+\]
+If you do not want "aligned alignments", use <code>split</code> or <code>aligned</code> inside <code>gather</code>:
+\[
+\begin{gather}
+\begin{split}
+& aaaaaaaaaaaaaaaaaaaaaaa = bbbbbbbbbbbbb,\\
+& bbbbbbbbbbbbbbbbbbbbbbbb = xxxxxx,
+\end{split} \label{E:a7}\\
+\begin{split}
+& ccccc = yyyyyyy,\\
+& dddddddd = zzzzz.
+\end{split}\label{E:a8}
+\end{gather}
+\]
+            </li>
+
+            <li>
+If you need several aligned "columns", you can still use <code>align</code> or  <code>align*</code>, but you have to add additional ampersands separating the columns:
+\[
+\begin{align*}
+aa &= bbbbb,  &  dd &= ee      &  &\text{(by Lemma 2),}\\
+hh &= ii,     &  ll &= kkkkkk  &  &\text{(by \eqref{E:a8}).}
+\end{align*}
+\]
+However, here you do not control the spacing between the columns. 
+If you want to prescribe it, use <code>alignat</code> (or <code>alignat*</code>), 
+which has a parameter (the number of columns) and requires specifying the intercolumn spaces:
+\[
+\begin{alignat}{3}
+aa &= bbbbb,\quad\  &  dd &= ee            &  &\text{(by Lemma 2),} \label{E:a9}\\
+hh &= ii,           &  ll &= kkkkkk\quad\  &  &\text{(by \eqref{E:a8}).}  \label{E:a10}
+\end{alignat}
+\]
+            </li>
+            <li>
+<code>alignat</code> also has a subsidiary version, <code>alignedat</code>, which you can put inside  <code>equation</code> if you need one centred number:
+\[
+\begin{equation}\label{E:a11}
+\begin{alignedat}{3}
+aa &= bbbbb,\quad\  &  dd &= ee            &  &\text{(by Lemma 2),}\\
+hh &= ii,           &  ll &= kkkkkk\quad\  &  &\text{(by \eqref{E:a8}).}
+\end{alignedat}
+\end{equation}
+\]
+            </li>
+
+            <li>
+If you want the consecutive equations of a group of equations to be numbered e.g. (2a), (2b) etc., use <code>subequations</code>, inside which you can place the previous constructs, e.g., <code>alignat</code> inside <code>subequations</code>:
+<p style="display: none">$\begin{equation}\label{E:suba}\end{equation}$</p>
+\[
+%\begin{equation}\label{E:suba}
+\begin{alignat}{3}
+aa &= bbbbb,\quad\  &  dd &= ee            &  &\text{(by Lemma 2),}  \tag{2.18a}\label{E:suba1}\\
+hh &= ii,           &  ll &= kkkkkk\quad\  &  &\text{(by \eqref{E:a8}).} \tag{2.18b}\label{E:suba2}
+\end{alignat}
+%\end{equation}
+\]
+or <code>gather</code> inside <code>subequations</code>:
+<p style="display: none">$\begin{equation}\label{E:subg}\end{equation}$</p>
+\[
+%\begin{subequations}\label{E:subg}
+\begin{gather}
+\begin{split}
+& aaaaaaaaaaaaaaaaaaaaaaa = bbbbbbbbbbbbb, \\
+& bbbbbbbbbbbbbbbbbbbbbbbb = xxxxxx,       
+\end{split} \tag{2.19a}\label{E:subg1}\\
+\begin{split}
+& ccccc = yyyyyyy,\\
+& dddddddd = zzzzz.
+\end{split} \tag{2.19b}\label{E:subg2} 
+\end{gather}
+%\end{subequations}
+\]
+Note the independent labels of the whole group and its parts;
+writing <code>\eqref{E:suba}</code>, we invoke the whole system
+\eqref{E:suba}, while writing <code>\eqref{E:suba1}</code> we refer to \eqref{E:suba1}.
+            </li>
+
+            <li>
+If you want to place a longer comment in the middle of an aligned construction, you can use <code>\intertext</code> (this only works within <code>align</code> or <code>align*</code>, but not with <code>aligned</code>):
+\[
+\begin{align} \label{E:inter}
+xxxxx &=  yyyyyyyyyyyyyy + [eeee \\
+         \MoveEqLeft \hspace{11em} \times zzzzzzzzzzzzzzzzzz]  \notag
+\end{align}
+\]
+<i>(note that we have not used the full strength of $(H)$ here, but only the concavity of $f$)</i>
+\[
+\begin{align}
+   &= tttttttttttttttttt \phantom{zzzzzzzzzzzzzzzzzz}\notag \\
+   &= vvvvvvvvvvv.  \notag       
+\end{align}
+\]
+            </li>
         </ul>
+
+        <h3>
+            References
+        </h3>
+
+        <p>
+            [1] G. Grätzer,
+            <i>More Math into $\LaTeX$</i>,
+            4th ed., Springer, Berlin, 2007.
+        </p>
     </div>
 
-    <hr />
     
+    <div style="display: none">
+    <hr />
+
     <h1>MathJax Example</h1>
     <p>Let's consider the quadratic formula: $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$</p>
     <p>And a simple inline expression: The value of \(E=mc^2\) is well-known.</p>
@@ -297,6 +584,7 @@ or <code>\qquad</code> (large space).
         \[ \pi_k(\mathrm{Sym}^\infty \mathcal M_g)\]
     </p>
     <hr />
+    </div>
 
 
 </body>
