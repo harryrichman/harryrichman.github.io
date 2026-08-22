@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<head>
+    <title>Tropical map</title>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+</head>
+
+<body>
+
+    <h2>
+        Where is tropical geometry?
+    </h2>
+
+    <div id="map" style="height: 500px; width: 118%; margin-left: -9%;"></div>
+
+    <h3>
+        List of people working in tropical geometry:
+    </h3>
+
+    <ul id="people-list" style="width: 118%; margin-left: -9%; display: flex; flex-direction: column; flex-wrap: wrap; height: 1200px;">
+
+    </ul>
+
+    <h3>Early career people (non-tenure-track):</h3>
+    <ul id="people-early-list" style="width: 118%; margin-left: -9%; display: flex; flex-direction: column; flex-wrap: wrap; height: 180px;">
+
+    </ul>
+
+    <!-- <h3>Old list</h3>
+<ul>
+    <li>
+        🌎 <a href="http://omid.amini.perso.math.cnrs.fr/index_en.html">
+            Omid Amini
+        </a>
+    </li>
+    <li>
+        🌎 <a href="https://www.uvm.edu/~sbackman/">
+            Spencer Backman
+        </a>
+    </li>
+    <li>
+        🌎 <a href="https://sites.google.com/view/mattbakermath/home/">
+            Matt Baker
+        </a>
+    </li>
+</ul> -->
+
+
+    <script>
+
+        const tropicalPeople = [
+            { //-22.89874189853753, -43.13314097173805
+                lat: -22.899,
+                lng: 316.867,
+                name: "Alex Abreu",
+                inst: "Fluminense Federal University",
+                site: "https://www.professores.uff.br/aabreu/",
+            },
+            { // 48.714389098723856, 2.211238053366726
+                lat: 48.714,
+                lng: 2.211,
+                name: "Omid Amini",
+                inst: "École Polytechnique",
+                site: "http://omid.amini.perso.math.cnrs.fr/index_en.html",
+            },
+            { //37.72432738075644, -122.4799512320188
+                lat: 37.724,
+                lng: 237.520,
+                name: "Federico Ardila",
+                inst: "San Francisco State University",
+                site: "http://fardila.com",
+            },
+            { //51.45860442107403, -2.6022079891262537
+                lat: 51.459,
+                lng: -2.602,
+                name: "Farhad Babaee",
+                inst: "University of Bristol",
+                site: "https://people.maths.bris.ac.uk/~ki18754/index.html",
+            },
+            { //44.47789104732835, -73.19649588916356
+                lat: 44.478,
+                lng: 286.804,
+                name: "Spencer Backman",
+                inst: "University of Vermont",
+                site: "https://www.uvm.edu/~sbackman/",
+            },
+            { // 33.7780147444109, -84.39796380309895
+                lat: 33.778,
+                lng: 275.602,
+                name: "Matt Baker",
+                inst: "Georgia Tech",
+                site: "https://sites.google.com/view/mattbakermath/home/",
+            },
+            { //29.940942005495597, -90.12034888993422
+                lat: 29.941,
+                lng: 269.880,
+                name: "Daniel Irving Bernstein",
+                inst: "Tulane University",
+                site: "https://dibernstein.github.io/",
+            },
+            { //43.46549498737639, -80.52756346063792
+                lat: 43.466,
+                lng: 279.472,
+                name: "Michael Borinsky",
+                inst: "Perimeter Institute",
+                site: "https://michaelborinsky.com/",
+            },
+            { //36.13560998058776, -80.27928870323822
+                lat: 36.136,
+                lng: 279.721,
+                name: "Sebastian Bozlee",
+                inst: "Wake Forest University",
+                site: "https://www.sebastianbozlee.net/home",
+            },
+            { //36.14486798553479, -86.80264437417344
+                lat: 36.145,
+                lng: 273.197,
+                name: "Madeline Brandt",
+                inst: "Vanderbilt University",
+                site: "https://sites.google.com/view/madelinebrandt",
+            },
+            { //47.24594168740389, -1.5518770469859422
+                lat: 47.246,
+                lng: -1.552,
+                name: "Erwan Brugallé",
+                inst: "Nantes Université",
+                site: "http://erwan.brugalle.perso.math.cnrs.fr/",
+            },
+            { //41.86498945089787, 12.479951112310488
+                lat: 41.865,
+                lng: 12.480,
+                name: "Lucia Caporaso",
+                inst: "Roma Tre University",
+                site: "https://www.mat.uniroma3.it/users/caporaso/caporaso.html",
+            },
+            { //35.954488120723695, -83.92944567440905
+                lat: 35.954,
+                lng: 276.071,
+                name: "Dustin Cartwright",
+                inst: "University of Tennessee",
+                site: "https://web.math.utk.edu/~dcartwr1/",
+            },
+            { //40.57310615908993, -105.08483910307991
+                lat: 40.573,
+                lng: 254.915,
+                name: "Renzo Cavalieri",
+                inst: "Colorado State University",
+                site: "https://sites.google.com/view/renzocavalieri/",
+            },
+            { //41.82688369761697, -71.40260184720822
+                lat: 41.827,
+                lng: 288.597,
+                name: "Melody Chan",
+                inst: "Brown University",
+                site: "https://www.math.brown.edu/mchan2/",
+            },
+            { //29.191803837276083, -81.05010890344897
+                lat: 29.192,
+                lng: 278.950,
+                name: "Daniel Corey",
+                inst: "Embry-Riddle Aeronautical University",
+                site: "https://sites.google.com/site/dcorey2814/",
+            },
+            { //-22.818136320256237, -47.064649432556415
+                lat: -22.818,
+                lng: 312.935,
+                name: "Ethan Cotteril",
+                inst: "University of Campinas",
+                site: "https://sites.google.com/site/cotterillethan/",
+            },
+            { //39.999636630114665, -83.01266678741841
+                lat: 40.000,
+                lng: 276.988,
+                name: "María Angélica Cueto",
+                inst: "Ohio State University",
+                site: "https://people.math.osu.edu/cueto.5/",
+            },
+            { //-34.59972850927348, -58.37312314719138
+                lat: -34.600,
+                lng: 301.627,
+                name: "Alicia Dickenstein",
+                inst: "University of Buenos Aires",
+                site: "http://mate.dm.uba.ar/~alidick/",
+            },
+            { //46.95054130188106, 7.438141933805638
+                lat: 46.951,
+                lng: 7.438,
+                name: "Jan Draisma",
+                inst: "University of Bern",
+                site: "https://www.math.unibe.ch/about_us/personen/prof_dr_draisma_jan/index_eng.html",
+            },
+            { //40.443308818617886, -79.94283917424954
+                lat: 40.443,
+                lng: 280.057,
+                name: "Chris Eur",
+                inst: "Carnegie Mellon University",
+                site: "https://www.math.cmu.edu/~ceur/",
+            },
+            { // 48.714389098723856, 2.211238053366726
+                lat: 48.714,
+                lng: 2.211,
+                name: "Lorenzo Fantini",
+                inst: "École Polytechnique",
+                site: "https://lorenzofantini.eu/",
+            },
+            { //51.524180552285884, -0.04034231611168759
+                lat: 51.524,
+                lng: -0.040,
+                name: "Alex Fink",
+                inst: "Queen Mary University of London",
+                site: "https://webspace.maths.qmul.ac.uk/a.fink/",
+            },
+            { //49.42560888292431, 7.755120097286562
+                lat: 49.426,
+                lng: 7.755,
+                name: "Andreas Gathmann",
+                inst: "University of Kaiserslautern-Landau",
+                site: "https://math.rptu.de/en/wgs/agag/people/head/gathmann",
+            },
+            { //54.76514680732579, -1.578181444792274
+                lat: 54.765,
+                lng: -1.578,
+                name: "Jeffrey Giansiracusa",
+                inst: "Durham University",
+                site: "https://sites.google.com/view/jeffreygiansiracusa/",
+            },
+            { //39.99974955951151, 116.32642243952779
+                lat: 40.000,
+                lng: 116.326,
+                name: "Xiang He",
+                inst: "Tsinghua University",
+                site: "https://sites.google.com/site/xiangghe/",
+            },
+            { //52.22153296153387, 21.014708310190517
+                lat: 52.222,
+                lng: 21.015,
+                name: "Paul Helminck",
+                inst: "IM PAN",
+                site: "https://paulhelminck.wordpress.com/",
+            },
+            { //55.94305799020073, -3.1854787904378123
+                lat: 55.943,
+                lng: -3.185,
+                name: "Milena Hering",
+                inst: "University of Edinburgh",
+                site: "https://webhomes.maths.ed.ac.uk/~mhering/",
+            },
+            { //40.34325771769195, -74.65509536075915
+                lat: 40.343,
+                lng: 285.345,
+                name: "June Huh",
+                inst: "Princeton University",
+                site: "https://web.math.princeton.edu/~huh/",
+            },
+            { //48.827258579886596, 2.3807270482980463
+                lat: 48.827,
+                lng: 2.381,
+                name: "Ilia Itenberg",
+                inst: "Sorbonne University",
+                site: "https://webusers.imj-prg.fr/~ilia.itenberg/",
+            },
+            { //38.03076086120147, -84.5039482621429
+                lat: 38.031,
+                lng: 275.496,
+                name: "Dave Jensen",
+                inst: "University of Kentucky",
+                site: "https://www.ms.uky.edu/~dhje223/",
+            },
+            { //53.46577468911452, -2.2326952736904278
+                lat: 53.466,
+                lng: -2.233,
+                name: "Marianne Johnson",
+                inst: "University of Manchester",
+                site: "https://personalpages.manchester.ac.uk/staff/Marianne.Johnson/",
+            },
+            { //52.512623584120576, 13.326880224417424
+                lat: 52.513,
+                lng: 13.327,
+                name: "Michael Joswig",
+                inst: "TU Berlin",
+                site: "https://page.math.tu-berlin.de/~joswig/",
+            },
+            { //41.73868205744693, -74.08526137604696
+                lat: 41.739,
+                lng: 285.915,
+                name: "Jaiung Jun",
+                inst: "SUNY New Paltz",
+                site: "https://sites.google.com/site/jaiungjun0915/home",
+            },
+            { //34.106250475702154, -117.70866456097508
+                lat: 34.106,
+                lng: 242.291,
+                name: "Dagan Karp",
+                inst: "Harvey Mudd College",
+                site: "http://www.math.hmc.edu/~dk/",
+            },
+            { //39.999636630114665, -83.01266678741841
+                lat: 40.000,
+                lng: 276.987,
+                name: "Eric Katz",
+                inst: "Ohio State University",
+                site: "https://people.math.osu.edu/katz.60/",
+            },
+            { //35.0264552300146, 135.7808003390545
+                lat: 35.026,
+                lng: 135.781,
+                name: "Shu Kawaguchi",
+                inst: "Kyoto University",
+                site: "https://www.math.kyoto-u.ac.jp/en/people/profile/kawaguch",
+            },
+            { //39.87124625378379, 32.76431968365007
+                lat: 39.871,
+                lng: 32.764,
+                name: "Enis Kaya",
+                inst: "Bilkent University",
+                site: "https://sites.google.com/view/eniskaya/",
+            },
+            { //35.61734461173484, 139.37711298162512
+                lat: 35.617,
+                lng: 139.377,
+                name: "Masanori Kobayashi",
+                inst: "Tokyo Metropolitan University",
+                site: "https://masanori.fpark.tmu.ac.jp/welcome-e.html",
+            },
+            { //56.34177898293711, -2.7943103177259085
+                lat: 56.342,
+                lng: -2.794,
+                name: "Yoav Len",
+                inst: "University of St Andrews",
+                site: "https://sites.google.com/site/yoavlen/home",
+            },
+            { //52.45442908127719, 13.29349825541028
+                lat: 52.454,
+                lng: 13.293,
+                name: "Georg Loho",
+                inst: "FU Berlin",
+                site: "https://lohomath.github.io/",
+            },
+            { //19.32757573496185, -99.18462554599495
+                lat: 19.328,
+                lng: 260.815,
+                name: "Lucía López de Medrano",
+                inst: "National Autonomous University of Mexico",
+                site: "https://www.matem.unam.mx/fsd/lucia",
+            },
+            { //52.37938345633258, -1.561566962094677
+                lat: 52.379,
+                lng: -1.562,
+                name: "Diane Maclagan",
+                inst: "University of Warwick",
+                site: "https://dmaclagan.warwick.ac.uk/",
+            },
+            { //19.133232796964652, 72.9150631809902
+                lat: 19.133,
+                lng: 72.915,
+                name: "Madhusudan Manjunath",
+                inst: "IIT Bombay",
+                site: "https://madhumath.wordpress.com/2016/05/06/homepage-madhusudan-manjunath/",
+            },
+            { //48.52656414869626, 9.056896793929683
+                lat: 48.527,
+                lng: 9.057,
+                name: "Hannah Markwig",
+                inst: "University of Tübingen",
+                site: "https://www.math.uni-tuebingen.de/user/hannah/",
+            },
+            { //41.86498945089787, 12.479951112310488
+                lat: 41.865,
+                lng: 12.481,
+                name: "Margarida Melo",
+                inst: "Roma Tre University",
+                site: "https://ricerca.mat.uniroma3.it/users/melo/",
+            },
+            { //46.199562786421275, 6.1451264259808305
+                lat: 46.200,
+                lng: 6.145,
+                name: "Grigory Mikhalkin",
+                inst: "University of Geneva",
+                site: "https://www.unige.ch/math/en/section/enseignants-et-chercheurs-2/grigory-mikhalkin",
+            },
+            { //29.940942005495597, -90.12034888993422
+                lat: 29.941,
+                lng: 269.880,
+                name: "Kalina Mincheva",
+                inst: "Tulane University",
+                site: "http://www.math.tulane.edu/~kmincheva/",
+            },
+            { //42.713018284431065, -73.20320387600887
+                lat: 42.713,
+                lng: 286.797,
+                name: "Ralph Morrison",
+                inst: "Williams College",
+                site: "https://sites.williams.edu/10rem/",
+            },
+            { //51.524180552285884, -0.04034231611168759
+                lat: 51.524,
+                lng: -0.040,
+                name: "Navid Nabijou",
+                inst: "Queen Mary University of London",
+                site: "https://sites.google.com/view/navidnabijou/home",
+            },
+            { //50.87812630865528, 4.699699369153648
+                lat: 50.878,
+                lng: 4.700,
+                name: "Johannes Nicaise",
+                inst: "KU Leuven",
+                site: "https://perswww.kuleuven.be/~u0025871/",
+            },
+            { //2.8328481173094713, 101.70318888270968
+                lat: 2.833,
+                lng: 101.703,
+                name: "Mounir Nisse",
+                inst: "Xiamen University Malaysia",
+                site: "https://sites.google.com/site/mounirnisse1/",
+            },
+            { //42.277264044996386, -83.73822856068499
+                lat: 42.277,
+                lng: 276.262,
+                name: "Sam Payne",
+                inst: "University of Michigan",
+                site: "https://sites.lsa.umich.edu/sdpayne/",
+            },
+            { //42.37101341480731, -72.51702426068134
+                lat: 42.371,
+                lng: 287.483,
+                name: "Nathan Pflueger",
+                inst: "Amherst College",
+                site: "https://npflueger.github.io/",
+            },
+            { //36.00154728754767, -78.93825006091323
+                lat: 36.002,
+                lng: 281.062,
+                name: "Joseph Rabinoff",
+                inst: "Duke University",
+                site: "https://sites.math.duke.edu/~jdr/index.html",
+            },
+            { //33.797587451461375, -84.32524691680855
+                lat: 33.798,
+                lng: 275.675,
+                name: "Rohini Ramadas",
+                inst: "Emory University",
+                site: "https://sites.google.com/view/rohini-ramadas/home",
+            },
+            { //52.20547432158604, 0.11321091275547893
+                lat: 52.205,
+                lng: 0.113,
+                name: "Dhruv Ranganathan",
+                inst: "University of Cambridge",
+                site: "https://www.dhruvrnathan.net/",
+            },
+            { //4.601586426429999, -74.06619777680788
+                lat: 4.602,
+                lng: 285.934,
+                name: "Johannes Rau",
+                inst: "Universidad de los Andes",
+                site: "https://math.uniandes.edu.co/~j.rau/index_en.html",
+            },
+            { //54.76514680732579, -1.578181444792274
+                lat: 54.765,
+                lng: -1.577,
+                name: "Yue Ren",
+                inst: "Durham University",
+                site: "https://www.yueren.de/",
+            },
+            { //51.524180552285884, -0.04034231611168759
+                lat: 51.524,
+                lng: -0.040,
+                name: "Felipe Rincón",
+                inst: "Queen Mary University of London",
+                site: "https://sites.google.com/site/feliper84/",
+            },
+            { //37.72432738075644, -122.4799512320188
+                lat: 37.724,
+                lng: 237.520,
+                name: "Dustin Ross",
+                inst: "San Francisco State University",
+                site: "https://sites.google.com/view/rossd/home",
+            },
+            { //58.93738201162368, 5.697200997746949
+                lat: 58.937,
+                lng: 5.697,
+                name: "Helge Ruddat",
+                inst: "University of Stavanger",
+                site: "https://www.ux.uis.no/~ruddat/",
+            },
+            { //59.34997996443617, 18.07021368276884
+                lat: 59.350,
+                lng: 18.070,
+                name: "Benjamin Schröter",
+                inst: "KTH Royal Institute of Technology",
+                site: "https://people.kth.se/~schrot/index.html",
+            },
+            { //59.94055828957004, 10.721551155469518
+                lat: 59.941,
+                lng: 10.722,
+                name: "Kris Shaw",
+                inst: "University of Oslo",
+                site: "https://www.mn.uio.no/math/english/people/aca/krisshaw/",
+            },
+            { //47.6570733076941, -122.30453274014916
+                lat: 47.657,
+                lng: 237.695,
+                name: "Farbod Shokrieh",
+                inst: "University of Washington",
+                site: "https://sites.math.washington.edu/~farbod/index.html",
+            },
+            { //32.11365045772794, 34.803576810332835
+                lat: 32.114,
+                lng: 34.804,
+                name: "Eugenii Shustin",
+                inst: "Tel-Aviv University",
+                site: "https://www.math.tau.ac.il/~shustin/",
+            },
+            { //30.61878250331204, -96.336435832046
+                lat: 30.619,
+                lng: 263.664,
+                name: "Frank Sottile",
+                inst: "Texas A&M University",
+                site: "https://franksottile.github.io/",
+            },
+            { //42.277264044996386, -83.73822856068499
+                lat: 42.277,
+                lng: 276.262,
+                name: "David Speyer",
+                inst: "University of Michigan",
+                site: "https://public.websites.umich.edu/~speyer/",
+            },
+            { //51.34214589779285, 12.391181921095553
+                lat: 51.342,
+                lng: 12.391,
+                name: "Bernd Sturmfels",
+                inst: "Max Planck Institute",
+                site: "https://math.berkeley.edu/~bernd/",
+            },
+            { //42.38669278691972, -72.5314599892582
+                lat: 42.387,
+                lng: 287.469,
+                name: "Jenia Tevelev",
+                inst: "UMass Amherst",
+                site: "https://websites.umass.edu/tevelev/",
+            },
+            { //31.26157271180363, 34.79952241030342
+                lat: 31.262,
+                lng: 34.800,
+                name: "Ilya Tyomkin",
+                inst: "Ben Gurion University of the Negev",
+                site: "https://ilyatyomkin.wixsite.com/math",
+            },
+            { //51.70817411003024, 8.77225173972067
+                lat: 51.708,
+                lng: 8.772,
+                name: "Martin Ulirsch",
+                inst: "Paderborn University",
+                site: "https://www.martinulirsch.net/",
+            },
+            { //40.914353148831296, -73.12434063923543
+                lat: 40.914,
+                lng: 286.876,
+                name: "Oleg Viro",
+                inst: "Stony Brook University",
+                site: "https://www.math.stonybrook.edu/~oleg/",
+            },
+            { //43.075616151054014, -89.4154311450464
+                lat: 43.076,
+                lng: 270.585,
+                name: "Chenxi Wu",
+                inst: "University of Wisconsin",
+                site: "https://wuchenxi.github.io/",
+            },
+            { //38.259708391334, 140.8385955101526
+                lat: 38.260,
+                lng: 140.839,
+                name: "Kazuhiko Yamaki",
+                inst: "Tohoku University",
+                site: "http://www.math.tohoku.ac.jp/english/people/yamaki-e.html",
+            },
+            { //36.59707174497973, -121.87419867623416
+                lat: 36.597,
+                lng: 238.126,
+                name: "Ruriko Yoshida",
+                inst: "Naval Postgraduate School",
+                site: "https://polytopes.net/",
+            },
+            { // 33.7780147444109, -84.39796380309895
+                lat: 33.778,
+                lng: 275.603,
+                name: "Josephine Yu",
+                inst: "Georgia Tech",
+                site: "https://sites.gatech.edu/josephineyu/",
+            },
+            { //34.137826296156504, -118.12525827446831
+                lat: 34.138,
+                lng: 241.875,
+                name: "Tony Yue Yu",
+                inst: "California Institute of Technology",
+                site: "https://tyy.caltech.edu/",
+            },
+            { //24.78694843412292, 120.99749768937893
+                lat: 24.787,
+                lng: 120.997,
+                name: "Chi Ho Yuen",
+                inst: "National Yang Ming Chiao Tung University",
+                site: "https://yuenchiho.github.io/",
+            },
+            { //43.58264149062541, -84.77640894229678
+                lat: 43.583,
+                lng: 275.224,
+                name: "Dmitry Zakharov",
+                inst: "Central Michigan University",
+                site: "https://people.se.cmich.edu/zakha1d/",
+            },
+            { //39.19756007533614, -96.58473563196613
+                lat: 39.198,
+                lng: 263.415,
+                name: "Ilia Zharkov",
+                inst: "Kansas State University",
+                site: "https://www.math.ksu.edu/~zharkov/",
+            },
+        ];
+
+        const tropicalPeopleTemp = [
+            { //51.34214589779285, 12.391181921095553
+                lat: 51.342,
+                lng: 12.392,
+                name: "Shelby Cox",
+                inst: "Max Planck Institute",
+                site: "https://shelbycox.github.io/",
+            },
+            { //43.30491823919909, 5.377418270784676
+                lat: 43.305,
+                lng: 5.377,
+                name: "Lucas Gierczak",
+                inst: "Aix-Marseille University",
+                site: "https://perso.pages.math.cnrs.fr/users/lucas.gierczak/",
+            },
+            { //50.12716376510015, 8.667784954988763
+                lat: 50.127,
+                lng: 8.668,
+                name: "Andreas Gross",
+                inst: "Goethe University Frankfurt",
+                site: "https://sites.google.com/view/andreasgross/home",
+            },
+            { //42.360241599280215, -71.0941600030112
+                lat: 42.360,
+                lng: 288.906,
+                name: "Siddarth Kannan",
+                inst: "Massachusetts Institute of Technology",
+                site: "https://sites.google.com/view/siddarthkannan",
+            },
+            { //34.675336638544024, -82.84073455398996
+                lat: 34.675,
+                lng: 277.159,
+                name: "Kisun Lee",
+                inst: "Clemson University",
+                site: "https://klee669.github.io/index.html",
+            },
+            { //42.277264044996386, -83.73822856068499
+                lat: 42.277,
+                lng: 276.263,
+                name: "Shiyue Li",
+                inst: "University of Michigan",
+                site: "https://www.shiyue.li/",
+            },
+            { //47.376526912548016, 8.547595810690215
+                lat: 47.377,
+                lng: 8.548,
+                name: "Samouil Molcho",
+                inst: "ETH Zurich",
+                site: "https://people.math.ethz.ch/~samolcho/",
+            },
+            { //25.017496033811195, 121.53970888110618
+                lat: 25.017,
+                lng: 121.540,
+                name: "Harry Richman",
+                inst: "NCTS, National Taiwan University",
+                site: "https://harryrichman.github.io/",
+            },
+            { //48.52656414869626, 9.056896793929683
+                lat: 48.527,
+                lng: 9.058,
+                name: "Felix Röhrle",
+                inst: "University of Tübingen",
+                site: "https://www.roehrle.org/",
+            },
+            { //54.015271008769574, -2.7895798904351405
+                lat: 54.015,
+                lng: -2.790,
+                name: "Ben Smith",
+                inst: "Lancaster University",
+                site: "https://sites.google.com/view/bsmithmathematics/",
+            },
+            {//52.37938345633258, -1.561566962094677
+                lat: 52.379,
+                lng: -1.561,
+                name: "Alejandro Vargas",
+                inst: "University of Warwick",
+                site: "https://vargas.page/",
+            },
+            { //69.68285078488137, 18.978020398334433
+                lat: 69.683,
+                lng: 18.978,
+                name: "Claudia Yun",
+                inst: "UiT Arctic University of Norway",
+                site: "https://www.claudiayun.com/",
+            }
+        ];
+
+        // Populate list of people
+        const peopleList = document.getElementById("people-list");
+
+        tropicalPeople.forEach(person => {
+            const listItem = document.createElement("li");
+            listItem.innerHTML = `<button id="${person.name.replaceAll(" ","")}-button">🌎</button> <a href="${person.site}">${person.name}</a>`;
+            peopleList.appendChild(listItem);
+        });
+
+        const peopleListTemp = document.getElementById("people-early-list");
+        tropicalPeopleTemp.forEach(person => {
+            const listItem = document.createElement("li");
+            listItem.innerHTML = `<button id="${person.name.replaceAll(" ","")}-button">🌎</button> <a href="${person.site}">${person.name}</a>`;
+            peopleListTemp.appendChild(listItem);
+        });
+
+        // Create red marker icon
+        const redIcon = new L.Icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
+        // Create green marker icon
+        const greenIcon = new L.Icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
+        // Create yellow marker icon
+        const yellowIcon = new L.Icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-yellow.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
+
+        let locationsMap = null;
+
+      function initializeMap() {
+        if (!locationsMap) {
+          // Create map with proper wrapping options
+          locationsMap = L.map('map', {
+            worldCopyJump: false,  // Enable proper wrapping behavior
+            maxBoundsViscosity: 1.0  // Ensure smooth scrolling at edges
+          }).setView([25.0174, 151.5431], 2); // Initialize centered east of Taipei
+
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors',
+            referrerPolicy: 'strict-origin-when-cross-origin',
+          }).addTo(locationsMap);
+
+
+          // Add markers for people with temporary positions
+          tropicalPeopleTemp.forEach(person => {
+            // Create marker with wrapped coordinates
+            const wrappedLatLng = L.latLng(person.lat, person.lng, true);  // true enables wrapping
+            const marker = L.marker(wrappedLatLng, {
+              icon: greenIcon,
+              // Enable marker wrapping
+              wrapAroundAntimeridian: false,
+              // Make the marker stay on top
+              zIndexOffset: 1000,
+            });
+
+            // Create styled popup content
+            let popupContent = `
+              <div style="font-family: Arial, sans-serif;">
+                <div style="font-weight: 500;">${person.name}
+                <abbr style="color: #666; font-size: 0.9em; margin-top: 2px;">
+                    <a href=${person.site}>web</a>
+                </abbr></div>
+                <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
+                  ${person.inst}
+                </div>
+              </div>
+            `;
+
+            // Show popup when map-button next to list name is clicked
+            document.getElementById(`${person.name.replaceAll(" ", "")}-button`).addEventListener("click", function () {
+                marker.openPopup();
+            });
+
+            // Add popup with location info
+            marker.bindPopup(popupContent);
+
+            // Add marker to map
+            marker.addTo(locationsMap);
+          });
+
+          // Combine people by institution
+          var tropicalPlaces = [];
+          var tropicalPlaceData = {};
+          tropicalPeople.forEach(person => {
+            const inst = person.inst;
+            if (tropicalPlaces.includes(inst)) {
+                // console.log("skip: " + inst);
+                tropicalPlaceData[inst].people.push(person);
+            } else {
+                tropicalPlaces.push(person.inst);
+                tropicalPlaceData[inst] = {people: []};
+                tropicalPlaceData[inst].people.push(person);
+                tropicalPlaceData[inst].lat = person.lat;
+                tropicalPlaceData[inst].lng = person.lng;
+            }
+          });
+        
+
+          // Add marker for each place
+          Object.keys(tropicalPlaceData).forEach(place => {
+            const placeData = tropicalPlaceData[place];
+            // Create marker
+            const latLng = L.latLng(placeData.lat, placeData.lng, false);  
+            const marker = L.marker(latLng, {
+              icon: yellowIcon,
+              // Enable marker wrapping
+            //   wrapAroundAntimeridian: false,
+              // Make the marker stay on top
+              zIndexOffset: 1000 * placeData.people.length,
+            });
+            // Create styled popup content
+            let popupContent = `<div style="font-family: Arial, sans-serif;">`;
+            placeData.people.forEach(person => {
+              popupContent += `
+                <div style="font-weight: 500; margin-top: 4px;">${person.name}
+                <abbr style="color: #666; font-size: 0.9em;">
+                    <a href=${person.site}>web</a>
+                </abbr></div>
+              `;
+            }),
+            popupContent += `
+                <div style="color: #666; font-size: 0.9em; margin-top: 4px;">
+                  ${place}
+                </div>
+              </div>
+            `;
+
+            // Add popup with location info
+            marker.bindPopup(popupContent);
+
+            // Add marker to map
+            marker.addTo(locationsMap);
+
+            // Show popup when map-button next to list name is clicked
+            placeData.people.forEach(person => {
+                document.getElementById(`${person.name.replaceAll(" ", "")}-button`).addEventListener("click", function () {
+                    marker.openPopup();
+                });
+            });
+
+          });
+
+          // Add move end handler to ensure markers stay visible
+          locationsMap.on('moveend', () => {
+            locationsMap.eachLayer((layer) => {
+              if (layer instanceof L.Marker) {
+                const pos = layer.getLatLng();
+                layer.setLatLng(pos, { wrap: true });  // Re-wrap coordinates after movement
+              }
+            });
+          });
+        }
+
+        // Handle map resize when tab becomes visible
+        // setTimeout(() => {
+        //   locationsMap.invalidateSize();
+        //   // Adjust bounds to show all markers
+        //   const bounds = L.latLngBounds(conferenceLocations.map(loc => [loc.lat, loc.lng]));
+        //   locationsMap.fitBounds(bounds, { padding: [50, 50] });
+        // }, 250);
+      }
+
+      initializeMap();
+    </script>
+</body>

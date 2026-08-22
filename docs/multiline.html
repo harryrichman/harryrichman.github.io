@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minimal MathJax Page</title>
+    <script>
+    MathJax = {
+        section: 1,
+        tex: {
+            inlineMath: {'[+]': [['$', '$']]},
+            tags: 'ams',
+            tagSide: 'left',
+            packages: {'[+]': ['tagformat', 'sections']},
+            tagformat: {
+                number: (n) => MathJax.config.section + '.' + n, // Format: section.equation
+                id: (tag) => 'eqn-id:' + tag,
+            },
+            processEscapes: true,
+            preFilters: [({math}) => {
+                if (math.inputData.recompile) {
+                MathJax.config.section = math.inputData.recompile.section;
+                }
+            }],
+            postFilters: [({math}) => {
+                if (math.inputData.recompile) {
+                math.inputData.recompile.section = MathJax.config.section;
+                }
+            }],
+        },
+        loader: {load: ['[tex]/tagformat']},
+        startup: {
+            ready() {
+            const Configuration = MathJax._.input.tex.Configuration.Configuration;
+            const CommandMap = MathJax._.input.tex.TokenMap.CommandMap;
+            new CommandMap('sections', {
+                nextSection(parser, name) {
+                MathJax.config.section++;
+                parser.tags.counter = parser.tags.allCounter = 0;
+                },
+                setSection(parser, name) {
+                const n = parser.GetArgument(name);
+                MathJax.config.section = parseInt(n);
+                }
+            });
+            Configuration.create(
+                'sections', {handler: {macro: ['sections']}}
+            );
+            MathJax.startup.defaultReady();
+            }
+        }
+    };
+    </script>
+    <!-- <script defer type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"></script>
+    <!-- <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script> -->
+
+    <link rel="stylesheet" type="text/css" href="main.css"/>
+    <style>
+        body { /* Libertine-like font */
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            width: 650px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+        .author-header, .date-header {
+            width: 100%;
+            text-align: center;
+        }
+
+        code {
+            background-color: rgba(220, 220, 220, 0.5);
+            padding: 0 2px;
+        }
+    </style>
+
+</head>
+<body>
+    <h2>
+        Multiline Formulas
+    </h2>
+
+    <!-- <address> -->
+        <table class="author-header">
+            <tbody>
+                <tr>
+                    <td>
+        Publications Department of IMPAN
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    <a href="mailto:publ@impan.pl">publ@impan.pl</a>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    <a href="https://www.impan.pl/en/publishing-house/for-authors">https://www.impan.pl/en/publishing-house/for-authors</a>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="date-header">April 11, 2018</p>
+    <!-- </address> -->
+    <br />
+    
+    <div>
+        <ul>
+            <li>
+                <em>A general remark</em>: the constructs ("environments") discussed below require the use of the <code>amsart</code> style or <code>\usepackage{amsmath}</code> and are of two types:
+                <ol>
+                    <li>
+                        the <code>align</code>, <code>gather</code>, <code>multline</code> and <code>alignat</code> encironments concern the whole equations, i.e. they replace <code>equation</code>
+                        (an exception: <code>align</code> can be used inside <code>gather</code>);
+                    </li>
+                    <li>
+                        <code>split</code>, <code>aligned</code>, <code>gathered</code> and <code>alignedat</code> are "subsidiary environments": they can only appear inside others, like <code>equation</code>, <code>align</code> or <code>gather</code>, and may embrace only some part of a displayed line.
+                    </li>
+                </ol>
+                Some constructs below require <code>\usepackage{mathtools}</code> or <code>\usepackage{enumitem}</code>.
+            </li>
+            <li>
+                <em>A piece of advice</em>: forget <code>eqnarray</code>!
+            </li>
+        </ul>
+        <h3>
+            1. One multiline formula
+        </h3>
+        <ul>
+            <li>
+                Quite often one formula (i.e. a sequence of expressions connected by binary operations and relations) takes more than one line.
+                As a rule, one formula (in this sense) should have one number; numbering parts of it separately is seldom necessary.
+                In case of need, you can refer to a specific line of a formula by writing e.g. (1.1)<sub>2</sub>.
+
+                <br /><br />
+                If equation numbers are placed on the left (as in the <code>amsart</code> style, and also in IMPAN journals), the number is normally on the first line of a multiline formula;
+                if the numbers are on the right, it is on the last line.
+                (Warning: this convention is followed by many publishers, but not all: sometimes the number is centred.)
+            </li>
+            <li>
+                If there are no natural places for alignment, use <code>multline</code>:
+                \[
+                \begin{multline}\label{E:m1}
+                aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa \\
+                 + bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb \\
+                  \leq dddddddddddddddddddddddddddddddddddddd.
+                \end{multline}
+                \]
+                The first line is set (almost) flush left, the last line is (almost) flush right, and the middle lines (if any) are centred.
+            </li>
+            <li>
+                You can shove any middle line within <code>multline</code> to the right or to the left by making it the argument of <code>\shoveright</code> or <code>\shoveleft</code>:
+    \[
+    \begin{multline}\label{E:m2}
+    aaaaaaaaaaaaaaaaaaaaaaaaaaaa\\
+    \shoveleft{+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb+dddddddddd}\\
+    \shoveright{\times eeeeeeeeeeeeeeeeeeeeeeee}\\
+    \le dddddddddddddddddddddddddd.
+    \end{multline}
+    \]
+            </li>
+            <li>
+                You can align a group of lines within <code>multline</code>, using  <code>aligned</code>:
+    \[
+    \begin{multline}\label{E:m3}
+    aaaaaaaaaaaaaaaaa + xxxxxxxxxxxx\\  
+    \begin{aligned}
+    &< bbbbbbbbbbbbbbbbbbbbbbb\\
+    &\quad + ddddddddddddddddddddddddddddddddddddd\\
+    &< ccccccccccccccccccc.  
+    \end{aligned}
+    \end{multline}
+    \]
+            </li>
+            <li>
+                To code an "object" consisting of centered lines within a formula, use <code>gathered</code>:
+                \[
+                \begin{equation}\label{E:pasc}
+                \mathrm{Pascal}_{4} =
+                \begin{gathered}
+                1\\
+                1\ 2\ 1\\
+                1\ 3\ 3\ 1\\
+                1\ 4\ 6\ 4\ 1
+                \end{gathered}
+                \end{equation}
+                \]
+                If you want to bottom-align two such objects, apply
+                <code>gathered[b]</code> (then you have to add <code>split</code> to centre the equation number):
+                \[
+                \begin{equation}
+                \begin{split}
+                \begin{gathered}[b]
+                1\\
+                1\ 2\ 1\\
+                1\ 3\ 3\ 1
+                \end{gathered}
+                \qquad
+                \begin{gathered}[b]
+                1\\
+                1\ 2\ 1\\
+                1\ 3\ 3\ 1\\
+                1\ 4\ 6\ 4\ 1
+                \end{gathered}
+                \end{split}
+                \end{equation}
+                \]
+                With <code>gathered[t]</code>, you get top alignment:
+                \[
+                \begin{equation*}
+                \begin{gathered}[t]
+                1\\
+                1\ 2\ 1\\
+                1\ 3\ 3\ 1
+                \end{gathered}
+                \qquad
+                \begin{gathered}[t]
+                1\\
+                1\ 2\ 1\\
+                1\ 3\ 3\ 1\\
+                1\ 4\ 6\ 4\ 1
+                \end{gathered}
+                \end{equation*}
+                \]
+            </li>
+            <li>
+                The <code>aligned[t]</code> and <code>aligned[b]</code> constructions enable independent and/or nested alignments, e.g.,
+                <code>aligned[t]</code> inside <code>aligned</code>: 
+                \[
+                \begin{equation}\label{E:top}
+                \begin{aligned}[t]
+                A &= xyzt = ztuv + \begin{aligned}[t]           
+                        [&f_1(a,b,c,d,e,f,g,h),\\
+                        &f_2(a,b,c,d,e,f,g,h),\\
+                        &f_3(a,b,c,d,e,f,g,h)]
+                        \end{aligned}\\
+                &= cccccccccccccc
+                \end{aligned}
+                \end{equation}
+                \]
+                or <code>aligned[b]</code> inside <code>aligned</code>:
+                \[
+                \begin{equation*}      
+                \begin{aligned}
+                \begin{aligned}[b]
+                xxxxxxx + [&f_1(a,b,c,d,e,f,g,h),\\
+                        &f_2(a,b,c,d,e,f,g,h),\\
+                        &f_3(a,b,c,d,e,f,g,h)]
+                        \end{aligned} 
+                                        &= tttttttttttttttttttttttttt\\
+                                        &= bbbbbbbbbbbbbb.
+                \end{aligned}
+                \end{equation*}
+                \]
+            </li>
+        </ul>
+    </div>
+
+    <!-- <span style="display: none">\(\nextSection\)</span> -->
+    <span style="display: none">$\nextSection$</span>
+    <div>
+        <h3>
+            2. Several formulas or sets of displayed equations
+        </h3>
+        <ul>
+            <li>
+                Separate formulas should end with a comma or semicolon&mdash;to make it clear that the next line is not a continuation of the preceding one. 
+            </li>
+            <li>
+                If there are no natural places for vertical alignment, use <code>gather</code>:
+                \[
+\begin{gather}
+aaaaaaaaaa=b,  \quad\    cc = xxx,   \quad\    dd = yyy, \label{E:g1}\\
+mmmmmmmmmmmmm=0   \quad\   \text{for all }i=1,\ldots,n.  \label{E:g2}
+\end{gather}
+\]
+Note the spacing between parts of a formula on the same line; you can use
+ <code>\quad</code> (small space), <code>\quad\ </code> (medium space)
+or <code>\qquad</code> (large space). 
+            </li>
+        </ul>
+    </div>
+
+    <hr />
+    
+    <h1>MathJax Example</h1>
+    <p>Let's consider the quadratic formula: $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$</p>
+    <p>And a simple inline expression: The value of \(E=mc^2\) is well-known.</p>
+    $$ H^0(X, \mathbb Z_p)$$
+
+    <p>
+        Alternative mathjax notation:
+        \[ \mathrm{Jac}(X) \;\cong\; \mathbb R^g / \mathbb Z^g .\]
+        Dollar signs test: $\sqrt{5} \not\in \mathbb Z_p$.
+        \[ \pi_k(\mathrm{Sym}^\infty \mathcal M_g)\]
+    </p>
+    <hr />
+
+
+</body>
+</html>
