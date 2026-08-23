@@ -533,19 +533,20 @@
             </li>
             <li>
                 If there are no natural places for vertical alignment, use <code>gather</code>:
-                \[
+\[
 \begin{gather}
-aaaaaaaaaa=b,  \quad\    cc = xxx,   \quad\    dd = yyy, \label{E:g1}\\
-mmmmmmmmmmmmm=0   \quad\   \text{for all }i=1,\ldots,n.  \label{E:g2}
+    aaaaaaaaaa=b,  \quad\  cc=xxx,  \quad\  dd=yyy, \label{E:g1}\\
+    mmmmmmmmmmmmm=0  \quad\  \text{for all }i=1,\ldots,n. \label{E:g2}
 \end{gather}
 \]
 <details>
 <summary>latex source</summary>
 <pre>
 <code> 
-function sayHello() {
-  console.log("Hello, World!");
-}
+\begin{gather}
+    aaaaaaaaaa=b,  \quad\  cc=xxx,  \quad\  dd=yyy, \label{E:g1}\\
+    mmmmmmmmmmmmm=0  \quad\  \text{for all }i=1,\ldots,n. \label{E:g2}
+\end{gather}
 </code>
 </pre>
 </details>
@@ -557,17 +558,18 @@ function sayHello() {
                 If a formula number is unnecessary, you can "switch it off", using <code>\notag</code>:
 \[
 \begin{gather}
-aaaaaaaaaa=b,  \quad\    cc = xxx,   \quad\    dd = yyy, \notag\\
-mmmmmmmmmmmmm=0   \quad\   \text{for all }i=1,\ldots,n. \label{E:g3}
+    aaaaaaaaaa=b,  \quad\  cc=xxx,  \quad\  dd=yyy, \notag\\
+    mmmmmmmmmmmmm=0  \quad\  \text{for all }i=1,\ldots,n. \label{E:g3}
 \end{gather}
 \]
 <details>
 <summary>latex source</summary>
 <pre>
 <code> 
-function sayHello() {
-  console.log("Hello, World!");
-}
+\begin{gather}
+    aaaaaaaaaa=b,  \quad\  cc=xxx,  \quad\  dd=yyy, \notag\\
+    mmmmmmmmmmmmm=0  \quad\  \text{for all }i=1,\ldots,n. \label{E:g3}
+\end{gather}
 </code>
 </pre>
 </details>
@@ -578,17 +580,18 @@ function sayHello() {
                 If no number is necessary, use <code>gather*</code>:
 \[
 \begin{gather*}
-aaaaaaaaaa=b,  \quad\    cc = xxx,   \quad\    dd = yyy,\\
-mmmmmmmmmmmmm=0   \quad\   \text{for all }i=1,\ldots,n.
+    aaaaaaaaaa=b,  \quad\  cc=xxx,  \quad\  dd=yyy,\\
+    mmmmmmmmmmmmm=0  \quad\  \text{for all }i=1,\ldots,n.
 \end{gather*}
 \]
 <details>
 <summary>latex source</summary>
 <pre>
 <code> 
-function sayHello() {
-  console.log("Hello, World!");
-}
+\begin{gather*}
+    aaaaaaaaaa=b,  \quad\  cc=xxx,  \quad\  dd=yyy,\\
+    mmmmmmmmmmmmm=0  \quad\  \text{for all }i=1,\ldots,n.
+\end{gather*}
 </code>
 </pre>
 </details>
@@ -598,10 +601,10 @@ function sayHello() {
                 If you need one centred number (for a group of equations), 
                 instead of <code>gather</code> use  <code>gathered</code> inside <code>equation</code>: 
 \[
-\begin{equation} \label{E:g4}
+\begin{equation}\label{E:g4}
 \begin{gathered}
-aaaaaaaaaa=b,  \quad\    cc = xxx,   \quad\    dd = yyy,\\
-mmmmmmmmmmmmm=0   \quad\   \text{for all }i=1,\ldots,n.
+    aaaaaaaaaa=b,  \quad\  cc=xxx,  \quad\  dd=yyy,\\
+    mmmmmmmmmmmmm=0  \quad\  \text{for all }i=1,\ldots,n.
 \end{gathered}
 \end{equation}
 \]
@@ -609,9 +612,12 @@ mmmmmmmmmmmmm=0   \quad\   \text{for all }i=1,\ldots,n.
 <summary>latex source</summary>
 <pre>
 <code> 
-function sayHello() {
-  console.log("Hello, World!");
-}
+\begin{equation}\label{E:g4}
+\begin{gathered}
+    aaaaaaaaaa=b,  \quad\  cc=xxx,  \quad\  dd=yyy,\\
+    mmmmmmmmmmmmm=0  \quad\  \text{for all }i=1,\ldots,n.
+\end{gathered}
+\end{equation}
 </code>
 </pre>
 </details>
@@ -621,25 +627,34 @@ function sayHello() {
                 You can also "gather" several "multlines", using the subsidiary construct <code>multlined</code>, available in <code>mathtools</code>, with optional parameters indicating the placement of formula numbers and the width of the formulas:
 \[
 \begin{gather}
-\begin{multlined}[t][10cm] 
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\
-+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\\
-\shoveright{\times yyyyyyyyyyy}\\
-=xxxxxxxxxxxxxxxxxxxxxxxxxxxx, \notag
-\end{multlined}\label{E:m4}\\
-\begin{multlined}[t][10cm] 
-cccccccccccccccccccccccccccccccccccccccc\\
-=ddddddddddddddddddddddddddddddddddddddddd. \notag
-\end{multlined}\label{E:m5}
+    \begin{multlined}[t][10cm] 
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\
+        +bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\\
+        \shoveright{\times yyyyyyyyyyy}\\
+        =xxxxxxxxxxxxxxxxxxxxxxxxxxxx, \notag
+    \end{multlined}\label{E:m4}\\
+    \begin{multlined}[t][10cm] 
+        cccccccccccccccccccccccccccccccccccccccc\\
+        =ddddddddddddddddddddddddddddddddddddddddd. \notag
+    \end{multlined}\label{E:m5}
 \end{gather}
 \]
 <details>
 <summary>latex source</summary>
 <pre>
 <code> 
-function sayHello() {
-  console.log("Hello, World!");
-}
+\begin{gather}
+    \begin{multlined}[t][10cm] 
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\
+        +bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\\
+        \shoveright{\times yyyyyyyyyyy}\\
+        =xxxxxxxxxxxxxxxxxxxxxxxxxxxx, \notag
+    \end{multlined}\label{E:m4}\\
+    \begin{multlined}[t][10cm] 
+        cccccccccccccccccccccccccccccccccccccccc\\
+        =ddddddddddddddddddddddddddddddddddddddddd. \notag
+    \end{multlined}\label{E:m5}
+\end{gather}
 </code>
 </pre>
 </details>
@@ -649,19 +664,22 @@ function sayHello() {
                 In most cases, however, we want to align something, and then we use <code>align</code>:
 \[
 \begin{align}
-xxxxx &= yyyyyyyyyyyyyy      \label{E:a1}\\
-      &\quad + zzzzzzzzzzzzzzzzzz,  \notag\\
-  bbb &= tttttttttttttttttt,  \label{E:a2}\\
-  hh  &= vvvvvvvvvvv.         \label{E:a3}
+    xxxxx &= yyyyyyyyyyyyyy \label{E:a1}\\
+          &\quad + zzzzzzzzzzzzzzzzzz, \notag\\
+    bbb   &= tttttttttttttttttt, \label{E:a2}\\
+    hh    &= vvvvvvvvvvv. \label{E:a3}
 \end{align}
 \]
 <details>
 <summary>latex source</summary>
 <pre>
 <code> 
-function sayHello() {
-  console.log("Hello, World!");
-}
+\begin{align}
+    xxxxx &= yyyyyyyyyyyyyy \label{E:a1}\\
+          &\quad + zzzzzzzzzzzzzzzzzz, \notag\\
+    bbb   &= tttttttttttttttttt, \label{E:a2}\\
+    hh    &= vvvvvvvvvvv. \label{E:a3}
+\end{align}
 </code>
 </pre>
 </details>
@@ -678,10 +696,10 @@ function sayHello() {
 \[
 \begin{equation}\label{E:a4}
 \begin{split}
-xxxxx &= yyyyyyyyyyyyyy\\
-      &\quad + zzzzzzzzzzzzzzzzzz,\\
-  bbb &= tttttttttttttttttt,\\
-  hh  &= vvvvvvvvvvv.
+    xxxxx &= yyyyyyyyyyyyyy\\
+          &\quad + zzzzzzzzzzzzzzzzzz,\\
+    bbb   &= tttttttttttttttttt,\\
+    hh    &= vvvvvvvvvvv.
 \end{split}
 \end{equation}
 \]
@@ -689,9 +707,14 @@ xxxxx &= yyyyyyyyyyyyyy\\
 <summary>latex source</summary>
 <pre>
 <code> 
-function sayHello() {
-  console.log("Hello, World!");
-}
+\begin{equation}\label{E:a4}
+\begin{split}
+    xxxxx &= yyyyyyyyyyyyyy\\
+          &\quad + zzzzzzzzzzzzzzzzzz,\\
+    bbb   &= tttttttttttttttttt,\\
+    hh    &= vvvvvvvvvvv.
+\end{split}
+\end{equation}
 </code>
 </pre>
 </details>
@@ -701,46 +724,62 @@ function sayHello() {
                 If you have two "split" sets of equations and you want them to have a common alignment, you have to use two  <code>split</code>'s inside <code>align</code> (this is the advantage of <code>split</code> over <code>aligned</code>):
 \[
 \begin{align}
-\begin{split}
- aaaaaaaaaaaaaaaaaaaaaaa &= bbbbbbbbbbbbb,\\
- bbbb &= xxxxxx,
-\end{split}\label{Ea5}\\
-\begin{split}
- ccccc &= yyyyyyy, \phantom{bbbbl}\\
- dddddddd &= zzzzz.\label{E:a6}
-\end{split}
+    \begin{split}
+        aaaaaaaaaaaaaaaaaaaaaaa &= bbbbbbbbbbbbb,\\
+        bbbb &= xxxxxx,
+    \end{split}\label{Ea5}\\
+    \begin{split}
+        ccccc &= yyyyyyy, \phantom{bbbbl}\\
+        dddddddd &= zzzzz.\label{E:a6}
+    \end{split}
 \end{align}
 \]
 <details>
 <summary>latex source</summary>
 <pre>
 <code> 
-function sayHello() {
-  console.log("Hello, World!");
-}
+\begin{align}
+    \begin{split}
+        aaaaaaaaaaaaaaaaaaaaaaa &= bbbbbbbbbbbbb,\\
+        bbbb &= xxxxxx,
+    \end{split}\label{Ea5}\\
+    \begin{split}
+        ccccc &= yyyyyyy,\\
+        dddddddd &= zzzzz.\label{E:a6}
+    \end{split}
+\end{align}
 </code>
 </pre>
 </details>
+<p class="warning">⚠ Warning: breaks in Mathjax</p>
+
                 If you do not want "aligned alignments", use <code>split</code> or <code>aligned</code> inside <code>gather</code>:
 \[
 \begin{gather}
-\begin{split}
-& aaaaaaaaaaaaaaaaaaaaaaa = bbbbbbbbbbbbb,\\
-& bbbbbbbbbbbbbbbbbbbbbbbb = xxxxxx,
-\end{split} \label{E:a7}\\
-\begin{split}
-& ccccc = yyyyyyy,\\
-& dddddddd = zzzzz.
-\end{split}\label{E:a8}
+    \begin{split}
+        & aaaaaaaaaaaaaaaaaaaaaaa = bbbbbbbbbbbbb,\\
+        & bbbbbbbbbbbbbbbbbbbbbbbb = xxxxxx,
+    \end{split}\label{E:a7}\\
+    \begin{split}
+        & ccccc = yyyyyyy,\\
+        & dddddddd = zzzzz.
+    \end{split}\label{E:a8}
 \end{gather}
 \]
 <details>
 <summary>latex source</summary>
 <pre>
 <code> 
-function sayHello() {
-  console.log("Hello, World!");
-}
+\begin{gather}
+    \begin{split}
+        & aaaaaaaaaaaaaaaaaaaaaaa = bbbbbbbbbbbbb,\\
+        & bbbbbbbbbbbbbbbbbbbbbbbb = xxxxxx,
+    \end{split}\label{E:a7}\\
+    \begin{split}
+        & ccccc = yyyyyyy,\\
+        & dddddddd = zzzzz.
+    \end{split}\label{E:a8}
+\end{gather}
 </code>
 </pre>
 </details>
@@ -750,17 +789,18 @@ function sayHello() {
                 If you need several aligned "columns", you can still use <code>align</code> or  <code>align*</code>, but you have to add additional ampersands separating the columns:
 \[
 \begin{align*}
-aa &= bbbbb,  &  dd &= ee      &  &\text{(by Lemma 2),}\\
-hh &= ii,     &  ll &= kkkkkk  &  &\text{(by \eqref{E:a8}).}
+    aa &= bbbbb, & dd &= ee     &  &\text{(by Lemma 2),}\\
+    hh &= ii,    & ll &= kkkkkk &  &\text{(by \eqref{E:a8}).}
 \end{align*}
 \]
 <details>
 <summary>latex source</summary>
 <pre>
 <code> 
-function sayHello() {
-  console.log("Hello, World!");
-}
+\begin{align*}
+    aa &= bbbbb, & dd &= ee     &  &\text{(by Lemma 2),}\\
+    hh &= ii,    & ll &= kkkkkk &  &\text{(by \eqref{E:a8}).}
+\end{align*}
 </code>
 </pre>
 </details>
@@ -769,16 +809,17 @@ function sayHello() {
                 which has a parameter (the number of columns) and requires specifying the intercolumn spaces:
 \[
 \begin{alignat}{3}
-aa &= bbbbb,\quad\  &  dd &= ee            &  &\text{(by Lemma 2),} \label{E:a9}\\
-hh &= ii,           &  ll &= kkkkkk\quad\  &  &\text{(by \eqref{E:a8}).}  \label{E:a10}
+    aa &= bbbbb,\quad\ & dd &= ee           &  &\text{(by Lemma 2),}\label{E:a9}\\
+    hh &= ii,          & ll &= kkkkkk\quad\ &  &\text{(by \eqref{E:a8}).}\label{E:a10}
 \end{alignat}
 \]
 <details>
 <summary>latex source</summary>
 <pre><code> 
-function sayHello() {
-  console.log("Hello, World!");
-}
+\begin{alignat}{3}
+    aa &= bbbbb,\quad\ & dd &= ee           &  &\text{(by Lemma 2),}\label{E:a9}\\
+    hh &= ii,          & ll &= kkkkkk\quad\ &  &\text{(by \eqref{E:a8}).}\label{E:a10}
+\end{alignat}
 </code>
 </pre>
 </details>
@@ -788,17 +829,20 @@ function sayHello() {
 \[
 \begin{equation}\label{E:a11}
 \begin{alignedat}{3}
-aa &= bbbbb,\quad\  &  dd &= ee            &  &\text{(by Lemma 2),}\\
-hh &= ii,           &  ll &= kkkkkk\quad\  &  &\text{(by \eqref{E:a8}).}
+    aa &= bbbbb,\quad\ & dd &= ee           &  &\text{(by Lemma 2),}\\
+    hh &= ii,          & ll &= kkkkkk\quad\ &  &\text{(by \eqref{E:a8}).}
 \end{alignedat}
 \end{equation}
 \]
 <details>
 <summary>latex source</summary>
 <pre><code> 
-function sayHello() {
-  console.log("Hello, World!");
-}
+\begin{equation}\label{E:a11}
+\begin{alignedat}{3}
+    aa &= bbbbb,\quad\ & dd &= ee           &  &\text{(by Lemma 2),}\\
+    hh &= ii,          & ll &= kkkkkk\quad\ &  &\text{(by \eqref{E:a8}).}
+\end{alignedat}
+\end{equation}
 </code>
 </pre>
 </details>
@@ -810,44 +854,61 @@ function sayHello() {
 \[
 %\begin{equation}\label{E:suba}
 \begin{alignat}{3}
-aa &= bbbbb,\quad\  &  dd &= ee            &  &\text{(by Lemma 2),}  \tag{2.18a}\label{E:suba1}\\
-hh &= ii,           &  ll &= kkkkkk\quad\  &  &\text{(by \eqref{E:a8}).} \tag{2.18b}\label{E:suba2}
+    aa &= bbbbb,\quad\ & dd &= ee           &  &\text{(by Lemma 2),}\tag{2.18a}\label{E:suba1}\\
+    hh &= ii,          & ll &= kkkkkk\quad\ &  &\text{(by \eqref{E:a8}).}\tag{2.18b}\label{E:suba2}
 \end{alignat}
 %\end{equation}
 \]
 <details>
 <summary>latex source</summary>
 <pre><code> 
-function sayHello() {
-  console.log("Hello, World!");
-}
+\begin{subequations}\label{E:suba}
+\begin{alignat}{3}
+    aa &= bbbbb,\quad\ & dd &= ee           &  &\text{(by Lemma 2),}\label{E:suba1}\\
+    hh &= ii,          & ll &= kkkkkk\quad\ &  &\text{(by \eqref{E:a8}).}\label{E:suba2}
+\end{alignat}
+\end{subequations}
 </code>
 </pre>
 </details>
+<p class="warning">⚠ Warning: breaks in Mathjax</p>
                 or <code>gather</code> inside <code>subequations</code>:
                 <p style="display: none">$\begin{equation}\label{E:subg}\end{equation}$</p>
 \[
 %\begin{subequations}\label{E:subg}
 \begin{gather}
 \begin{split}
-& aaaaaaaaaaaaaaaaaaaaaaa = bbbbbbbbbbbbb, \\
-& bbbbbbbbbbbbbbbbbbbbbbbb = xxxxxx,       
-\end{split} \tag{2.19a}\label{E:subg1}\\
+    & aaaaaaaaaaaaaaaaaaaaaaa = bbbbbbbbbbbbb,\\
+    & bbbbbbbbbbbbbbbbbbbbbbbb = xxxxxx,
+\end{split}\tag{2.19a}\label{E:subg1}\\
 \begin{split}
-& ccccc = yyyyyyy,\\
-& dddddddd = zzzzz.
-\end{split} \tag{2.19b}\label{E:subg2} 
+    & ccccc = yyyyyyy,\\
+    & dddddddd = zzzzz.
+\end{split}\tag{2.19b}\label{E:subg2} 
 \end{gather}
 %\end{subequations}
 \]
 <details>
 <summary>latex source</summary>
 <pre>
-<code>function sayHello() {
-  console.log("Hello, World!");
-}</code>
+<code>
+\begin{subequations}\label{E:subg}
+\begin{gather}
+    \begin{split}
+        & aaaaaaaaaaaaaaaaaaaaaaa = bbbbbbbbbbbbb,\\
+        & bbbbbbbbbbbbbbbbbbbbbbbb = xxxxxx,
+    \end{split}\label{E:subg1}\\
+    \begin{split}
+        & ccccc = yyyyyyy,\\
+        & dddddddd = zzzzz.
+    \end{split}\label{E:subg2} 
+\end{gather}
+\end{subequations}
+</code>
 </pre>
 </details>
+<p class="warning">⚠ Warning: breaks in Mathjax</p>
+
                 Note the independent labels of the whole group and its parts;
                 writing <code>\eqref{E:suba}</code>, we invoke the whole system
                 \eqref{E:suba}, while writing <code>\eqref{E:suba1}</code> we refer to \eqref{E:suba1}.
@@ -856,28 +917,34 @@ function sayHello() {
             <li>
                 If you want to place a longer comment in the middle of an aligned construction, you can use <code>\intertext</code> (this only works within <code>align</code> or <code>align*</code>, but not with <code>aligned</code>):
 \[
-\begin{align} \label{E:inter}
-xxxxx &=  yyyyyyyyyyyyyy + [eeee \\
-         \MoveEqLeft \hspace{11em} \times zzzzzzzzzzzzzzzzzz]  \notag
+\begin{align}\label{E:inter}
+    xxxxx &= yyyyyyyyyyyyyy + [eeee \\
+    \MoveEqLeft \hspace{11em} \times zzzzzzzzzzzzzzzzzz] \notag
 \end{align}
 \]
 <em>(note that we have not used the full strength of $(H)$ here, but only the concavity of $f$)</em>
 \[
 \begin{align}
-   &= tttttttttttttttttt \phantom{zzzzzzzzzzzzzzzzzz}\notag \\
-   &= vvvvvvvvvvv.  \notag       
+    &= tttttttttttttttttt \phantom{zzzzzzzzzzzzzzzzzz} \notag\\
+    &= vvvvvvvvvvv. \notag
 \end{align}
 \]
 <details>
 <summary>latex source</summary>
 <pre>
 <code>
-function sayHello() {
-  console.log("Hello, World!");
-}
+\begin{align}\label{E:inter}
+    xxxxx &= yyyyyyyyyyyyyy + [eeee \\
+    \MoveEqLeft[-10] \times zzzzzzzzzzzzzzzzzz] \notag\\
+    \intertext{(\emph{note that we have not used the full strength 
+        of $(H)$ here, but only the concavity of $f$})}
+    &= tttttttttttttttttt \notag\\
+    &= vvvvvvvvvvv. \notag
+\end{align}
 </code>
 </pre>
 </details>
+<p class="warning">⚠ Warning: breaks in Mathjax</p>
             </li>
         </ul>
     </div>
