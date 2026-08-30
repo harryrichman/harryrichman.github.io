@@ -90,14 +90,14 @@
 
 
   <script>
-    const currentAffiliation = [{ 
-      lat: 25.0219, 
-      lng: 121.5374, 
-      name: "NCTS, National Taiwan University",
-      city: "Taipei, Taiwan",
-      position: "Postdoctoral fellow",
-      period: "October 2024 - now",
-      event: "Postdoc"
+    const currentAffiliation = [{
+      lat: 24.788,
+      lng: 120.9969,
+      name: "National Yang Ming Chiao Tung University",
+      city: "Hsinchu, Taiwan",
+      position: "Assistant Professor",
+      period: "August 2026 - now",
+      event: "Assistant Professor"// "Faculty",
     }];
     const previousAffiliations = [
       { 
@@ -138,6 +138,15 @@
         name: "Fred Hutch Cancer Center",
         city: "Seattle, USA",
         period: "March 2023 - September 2024",
+        event: "Postdoc"
+      },
+      { 
+        lat: 25.0219, 
+        lng: 121.5374, 
+        name: "NCTS, National Taiwan University",
+        city: "Taipei, Taiwan",
+        position: "Postdoctoral fellow",
+        period: "October 2024 - July 2026",
         event: "Postdoc"
       },
     ]
@@ -322,13 +331,17 @@
         lat: 36.3767,
         lng: 127.3849,
         name: "Semin Yoo research visit",
-        period: "15 June - 19 June 2026",
+        period: "15 - 19 June 2026",
+        inst: "IBS - Discrete Mathematics Group",
+        city: "Daejeon, Korea",
       },
       { //37.500685643167664, 127.03075870056708
         lat: 37.5007,
         lng: 127.0308,
-        name: "Korean Math Society International Conference",
-        period: "22 June - 25 June 2026",
+        name: "KMS International Conference",
+        period: "22 - 25 June 2026",
+        inst: "Korean Math Society",
+        city: "Seoul, Korea",
       },
     ];
     const futureConferences = [
@@ -471,7 +484,7 @@
       const wrappedLatLng = L.latLng(place.lat, place.lng, true);  // true enables wrapping
 
       const marker = L.marker(wrappedLatLng, {
-        icon: greenIcon,
+        icon: yellowIcon,
         // Enable marker wrapping
         wrapAroundAntimeridian: true,
         // Make the marker stay on top
@@ -500,7 +513,7 @@
       // Add marker to map
       let mapMarker = marker.addTo(locationsMap);
       // Adjust color saturation to light green
-      mapMarker._icon.style.filter = "saturate(40%) brightness(130%)";
+      mapMarker._icon.style.filter = "saturate(90%) brightness(110%)";
 
       // Show popup when map-button next to list name is clicked
       document.getElementById(`${place.name.replaceAll(" ", "")}-button`).addEventListener("click", function () {
@@ -514,7 +527,7 @@
       const wrappedLatLng = L.latLng(place.lat, place.lng, true);  // true enables wrapping
 
       const marker = L.marker(wrappedLatLng, {
-        icon: blueIcon,
+        icon: violetIcon,
         // Enable marker wrapping
         wrapAroundAntimeridian: true,
         zIndexOffset: 300,
@@ -536,7 +549,8 @@
       // Add marker to map
       let mapMarker = marker.addTo(locationsMap);
       // Adjust color saturation to light violet
-      mapMarker._icon.style.filter = "hue-rotate(25deg) saturate(20%) brightness(150%)";
+      mapMarker._icon.style.filter = "hue-rotate(15deg) saturate(80%) brightness(120%)";
+      // mapMarker._icon.style.filter = "hue-rotate(25deg) saturate(20%) brightness(150%)";
 
       // Show popup when map-button next to list name is clicked
       document.getElementById(`${place.name.replaceAll(" ", "")}-button`).addEventListener("click", function () {
@@ -550,7 +564,7 @@
       const wrappedLatLng = L.latLng(place.lat, place.lng, true);  // true enables wrapping
 
       const marker = L.marker(wrappedLatLng, {
-        icon: violetIcon,
+        icon: greenIcon,
         // Enable marker wrapping
         wrapAroundAntimeridian: true,
         // Make the marker stay on top
@@ -579,8 +593,8 @@
       // Add marker to map
       let mapMarker = marker.addTo(locationsMap);
       // Adjust color saturation to dark green
-      // mapMarker._icon.style.filter = "saturate(75%) brightness(85%)";
-      mapMarker._icon.style.filter = "hue-rotate(-130deg) brightness(115%)";
+      mapMarker._icon.style.filter = "hue-rotate(30deg) saturate(90%) brightness(100%)";
+      // mapMarker._icon.style.filter = "hue-rotate(-130deg) brightness(115%)";
 
       // Show popup when map-button next to list name is clicked
       document.getElementById(`${place.name.replaceAll(" ", "")}-button`).addEventListener("click", function () {
@@ -594,10 +608,10 @@
     legend.onAdd = function (map) {
       const div = L.DomUtil.create('div', 'legend');
       div.innerHTML = 
-        '<i style="background: #238443"></i>Current affiliation<br>' +
-        '<i style="background: #78c679"></i>Past affiliations<br>' +
+        '<i style="background: #009c55"></i>Current affiliation<br>' +
+        '<i style="background: #dcd737"></i>Past affiliations<br>' +
         '<i style="background: #74a9cf"></i>Past conferences, workshops, etc.<br>' +
-        '<i style="background: #bdc9e1"></i>Future conferences, workshops, etc.';
+        '<i style="background: #ca4ac6"></i>Future conferences, workshops, etc.';
       return div;
     };
     legend.addTo(locationsMap);
